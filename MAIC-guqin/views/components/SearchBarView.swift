@@ -15,15 +15,29 @@ struct SearchBarView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(Color("TextSecondary"))
             TextField("高山流水大师现场演奏视频", text: $searchText)
-                .padding(.vertical, 8)
-                .padding(.horizontal, 5)
-                .background(Color("BackgroundTertiary")) // 搜索框输入区域背景
-                .cornerRadius(8)
                 .foregroundColor(Color("TextPrimary")) // 输入文本颜色
+                
         }
         .padding()
-        .background(Color("BackgroundPrimary")) // 搜索栏的背景色
-        .cornerRadius(15)
+        .background(
+            Color("BackgroundPrimary")
+                .opacity(0.5)
+                .background(
+                    BlurView(style: .systemUltraThinMaterial)
+                )
+                .cornerRadius(20)
+        )
         .padding(.horizontal)
+    }
+}
+
+struct BlurView: UIViewRepresentable{
+    let style: UIBlurEffect.Style
+    
+    func makeUIView(context: Context) -> some UIView {
+        return UIVisualEffectView(effect: UIBlurEffect(style:style))
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
     }
 }
