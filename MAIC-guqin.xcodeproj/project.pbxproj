@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		AE0429DD2E0A85FC00FE9F7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE0429C52E0A85F500FE9F7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE0429CC2E0A85F500FE9F7B;
+			remoteInfo = "MAIC-guqin";
+		};
+		AE0429E72E0A85FC00FE9F7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE0429C52E0A85F500FE9F7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE0429CC2E0A85F500FE9F7B;
+			remoteInfo = "MAIC-guqin";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE0429CD2E0A85F500FE9F7B /* MAIC-guqin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAIC-guqin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0429DC2E0A85FC00FE9F7B /* MAIC-guqinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAIC-guqinTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0429E62E0A85FC00FE9F7B /* MAIC-guqinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAIC-guqinUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AE0429CF2E0A85F500FE9F7B /* MAIC-guqin */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "MAIC-guqin";
+			sourceTree = "<group>";
+		};
+		AE0429DF2E0A85FC00FE9F7B /* MAIC-guqinTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "MAIC-guqinTests";
+			sourceTree = "<group>";
+		};
+		AE0429E92E0A85FC00FE9F7B /* MAIC-guqinUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "MAIC-guqinUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE0429CA2E0A85F500FE9F7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE0429D92E0A85FC00FE9F7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE0429E32E0A85FC00FE9F7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE0429C42E0A85F500FE9F7B = {
+			isa = PBXGroup;
+			children = (
+				AE0429CF2E0A85F500FE9F7B /* MAIC-guqin */,
+				AE0429DF2E0A85FC00FE9F7B /* MAIC-guqinTests */,
+				AE0429E92E0A85FC00FE9F7B /* MAIC-guqinUITests */,
+				AE0429CE2E0A85F500FE9F7B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE0429CE2E0A85F500FE9F7B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE0429CD2E0A85F500FE9F7B /* MAIC-guqin.app */,
+				AE0429DC2E0A85FC00FE9F7B /* MAIC-guqinTests.xctest */,
+				AE0429E62E0A85FC00FE9F7B /* MAIC-guqinUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE0429CC2E0A85F500FE9F7B /* MAIC-guqin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE0429F02E0A85FC00FE9F7B /* Build configuration list for PBXNativeTarget "MAIC-guqin" */;
+			buildPhases = (
+				AE0429C92E0A85F500FE9F7B /* Sources */,
+				AE0429CA2E0A85F500FE9F7B /* Frameworks */,
+				AE0429CB2E0A85F500FE9F7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AE0429CF2E0A85F500FE9F7B /* MAIC-guqin */,
+			);
+			name = "MAIC-guqin";
+			packageProductDependencies = (
+			);
+			productName = "MAIC-guqin";
+			productReference = AE0429CD2E0A85F500FE9F7B /* MAIC-guqin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE0429DB2E0A85FC00FE9F7B /* MAIC-guqinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE0429F32E0A85FC00FE9F7B /* Build configuration list for PBXNativeTarget "MAIC-guqinTests" */;
+			buildPhases = (
+				AE0429D82E0A85FC00FE9F7B /* Sources */,
+				AE0429D92E0A85FC00FE9F7B /* Frameworks */,
+				AE0429DA2E0A85FC00FE9F7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE0429DE2E0A85FC00FE9F7B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AE0429DF2E0A85FC00FE9F7B /* MAIC-guqinTests */,
+			);
+			name = "MAIC-guqinTests";
+			packageProductDependencies = (
+			);
+			productName = "MAIC-guqinTests";
+			productReference = AE0429DC2E0A85FC00FE9F7B /* MAIC-guqinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AE0429E52E0A85FC00FE9F7B /* MAIC-guqinUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE0429F62E0A85FC00FE9F7B /* Build configuration list for PBXNativeTarget "MAIC-guqinUITests" */;
+			buildPhases = (
+				AE0429E22E0A85FC00FE9F7B /* Sources */,
+				AE0429E32E0A85FC00FE9F7B /* Frameworks */,
+				AE0429E42E0A85FC00FE9F7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE0429E82E0A85FC00FE9F7B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AE0429E92E0A85FC00FE9F7B /* MAIC-guqinUITests */,
+			);
+			name = "MAIC-guqinUITests";
+			packageProductDependencies = (
+			);
+			productName = "MAIC-guqinUITests";
+			productReference = AE0429E62E0A85FC00FE9F7B /* MAIC-guqinUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE0429C52E0A85F500FE9F7B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					AE0429CC2E0A85F500FE9F7B = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					AE0429DB2E0A85FC00FE9F7B = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = AE0429CC2E0A85F500FE9F7B;
+					};
+					AE0429E52E0A85FC00FE9F7B = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = AE0429CC2E0A85F500FE9F7B;
+					};
+				};
+			};
+			buildConfigurationList = AE0429C82E0A85F500FE9F7B /* Build configuration list for PBXProject "MAIC-guqin" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE0429C42E0A85F500FE9F7B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AE0429CE2E0A85F500FE9F7B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE0429CC2E0A85F500FE9F7B /* MAIC-guqin */,
+				AE0429DB2E0A85FC00FE9F7B /* MAIC-guqinTests */,
+				AE0429E52E0A85FC00FE9F7B /* MAIC-guqinUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE0429CB2E0A85F500FE9F7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE0429DA2E0A85FC00FE9F7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE0429E42E0A85FC00FE9F7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE0429C92E0A85F500FE9F7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE0429D82E0A85FC00FE9F7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE0429E22E0A85FC00FE9F7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE0429DE2E0A85FC00FE9F7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE0429CC2E0A85F500FE9F7B /* MAIC-guqin */;
+			targetProxy = AE0429DD2E0A85FC00FE9F7B /* PBXContainerItemProxy */;
+		};
+		AE0429E82E0A85FC00FE9F7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE0429CC2E0A85F500FE9F7B /* MAIC-guqin */;
+			targetProxy = AE0429E72E0A85FC00FE9F7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AE0429EE2E0A85FC00FE9F7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AE0429EF2E0A85FC00FE9F7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE0429F12E0A85FC00FE9F7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ffffy.MAIC-guqin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE0429F22E0A85FC00FE9F7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ffffy.MAIC-guqin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AE0429F42E0A85FC00FE9F7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ffffy.MAIC-guqinTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAIC-guqin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MAIC-guqin";
+			};
+			name = Debug;
+		};
+		AE0429F52E0A85FC00FE9F7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ffffy.MAIC-guqinTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAIC-guqin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MAIC-guqin";
+			};
+			name = Release;
+		};
+		AE0429F72E0A85FC00FE9F7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ffffy.MAIC-guqinUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MAIC-guqin";
+			};
+			name = Debug;
+		};
+		AE0429F82E0A85FC00FE9F7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ffffy.MAIC-guqinUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MAIC-guqin";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE0429C82E0A85F500FE9F7B /* Build configuration list for PBXProject "MAIC-guqin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE0429EE2E0A85FC00FE9F7B /* Debug */,
+				AE0429EF2E0A85FC00FE9F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE0429F02E0A85FC00FE9F7B /* Build configuration list for PBXNativeTarget "MAIC-guqin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE0429F12E0A85FC00FE9F7B /* Debug */,
+				AE0429F22E0A85FC00FE9F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE0429F32E0A85FC00FE9F7B /* Build configuration list for PBXNativeTarget "MAIC-guqinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE0429F42E0A85FC00FE9F7B /* Debug */,
+				AE0429F52E0A85FC00FE9F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE0429F62E0A85FC00FE9F7B /* Build configuration list for PBXNativeTarget "MAIC-guqinUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE0429F72E0A85FC00FE9F7B /* Debug */,
+				AE0429F82E0A85FC00FE9F7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE0429C52E0A85F500FE9F7B /* Project object */;
+}
