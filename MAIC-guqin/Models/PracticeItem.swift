@@ -12,4 +12,5 @@ struct PracticeItem: Identifiable {
     let imageName: String
     let title: String
     let progress: String
+    var progressValue: Float? = 0.5  
 }

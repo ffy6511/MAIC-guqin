@@ -66,6 +66,11 @@ struct HomeView: View {
                 
                 
 //            TODO: 构造合适的scroll视图存放内容卡片
+            VStack{
+                RecommendationSection()
+                
+                RecentPracticeSection()
+            }
             
         
             VStack {

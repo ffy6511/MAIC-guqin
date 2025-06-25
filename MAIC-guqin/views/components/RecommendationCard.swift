@@ -11,34 +11,87 @@ struct RecommendationCard: View {
     let item: RecommendationItem // 直接接收一个 Model 实例
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Image(item.imageName) // 确保 Assets 中有这些图片
-                .resizable()
-                .scaledToFill()
-                .frame(width: 150, height: 100)
-                .clipped()
-                .cornerRadius(8)
+        // 最外层使用 ZStack 来实现图片背景和文字叠加的效果
+        ZStack(alignment: .topLeading) {
 
-            Text(item.title)
-                .font(.subheadline)
-                .fontWeight(.medium)
-                .lineLimit(1)
-                .foregroundColor(Color("TextPrimary"))
-            Text(item.subtitle)
-                .font(.caption)
-                .foregroundColor(Color("TextSecondary"))
-                .lineLimit(1)
-            Text(item.date)
-                .font(.caption2)
-                .foregroundColor(Color("TextTertiary"))
-            Text(item.plays)
-                .font(.caption2)
-                .foregroundColor(Color("TextTertiary"))
+            // ---------- 背景图片部分 ----------
+            // 根据 item.imageName 是否能加载到图片来决定显示内容
+            if let uiImage = UIImage(named: item.imageName) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 350, height: 200)
+                    .clipped()
+                    .opacity(0.6)
+            } else {
+                // 如果图片不存在，显示默认的占位图
+                Image("推荐图片")
+                    .resizable()
+                    .scaledToFill() // 占位图也填充整个区域
+                    .frame(width: 350, height: 200)
+                    .background(Color.gray.opacity(0.4)) // 占位图的背景色，使其可见
+                    .opacity(0.6)
+            }
+
+            // ---------- 渐变蒙版（如果需要）----------
+            // 观察Figma图，文字下方似乎有一个从透明到深色的渐变区域
+            LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.6)]),
+                           startPoint: .center, // 渐变从中间开始
+                           endPoint: .top) // 渐变到底部
+                .frame(width: 350, height: 200)
+
+            // ---------- 文字信息部分 ----------
+            VStack(alignment: .leading, spacing: 4) { // 文字内容VStack，文字行间距
+                Text(item.title)
+                    .font(.title3) // 标题字体可能更大
+                    .fontWeight(.bold) // 标题字重加粗
+                    .lineLimit(2) // 允许两行标题
+                    .foregroundColor(.textInversePrimary)
+
+                Text(item.subtitle)
+                    .font(.body)
+                    .foregroundColor(.textInvereSecondary)
+                    .lineLimit(1)
+
+                Text(item.date)
+                    .font(.caption)
+                    .foregroundColor(.textInvereSecondary)
+
+            }
+            .padding()
+            
+            // ---------- 右下角的 'item.plays' 部分 ----------
+                       // 这是一个独立的 Text 视图，直接在 ZStack 中使用 .alignment 修饰符
+           Text(item.plays)
+               .font(.caption)
+               .foregroundColor(.textInvereSecondary)
+               .padding()
+               .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+//            将文字的逻辑边界扩展到与父视图一样大，然后将其通过alignment对齐到右下角
+
+            
+
         }
-        .frame(width: 150)
-        .padding(10)
-        .background(Color("BackgroundSecondary"))
-        .cornerRadius(10)
-        .shadow(radius: 3)
+        // ---------- 整个卡片的样式 ----------
+        .frame(width: 350, height: 200)
+        .background(Color.black.opacity(0.1)) // 确保背景色透明度，让图片显示
+        .cornerRadius(16) // 整个卡片的圆角
+        .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 4) // 阴影更明显
+
+    }
+}
+
+// Preview for RecommendationCard
+struct RecommendationCard_Previews: PreviewProvider {
+    static var previews: some View {
+        RecommendationCard(item: RecommendationItem(
+            imageName: "recommendation_image1", // 确保这个图片在 Assets 中，并且这张图是那张大图的背景图
+            title: "苏思思-《潇湘水云》",
+            subtitle: "中央民族乐团古筝之夜",
+            date: "2024.10.27 深圳", // 这个日期在Figma图里是和城市一起的
+            plays: "跟练过该曲目8次" // 播放次数是“跟练过该曲目8次”
+        ))
+        .previewLayout(.sizeThatFits) // 预览时自动调整大小以适应内容
+        .padding() // 给预览卡片一个外边距，使其不贴边
     }
 }
