@@ -16,14 +16,17 @@ struct RecommendationSection: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(title)
-                    .font(.headline)
-                    .foregroundColor(Color("TextPrimary")) // 使用 Assets 颜色
+                    .font(.title2)
+                    .foregroundColor(Color("TextPrimary"))
+                    .padding(.horizontal)
+
+                
                 Spacer()
                 Button {
                     viewModel.refreshRecommendations()
                 } label: {
                     Image(systemName: "ellipsis")
-                        .foregroundColor(Color("TextSecondary")) // 使用 Assets 颜色
+                        .foregroundColor(Color("TextSecondary"))
                 }
             }
             .padding(.horizontal)

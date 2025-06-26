@@ -16,8 +16,10 @@ struct RecentPracticeSection: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(title)
-                    .font(.headline)
+                    .font(.title2)
                     .foregroundColor(Color("TextPrimary"))
+                    .padding(.horizontal)
+                
                 Spacer()
                 Button {
                     viewModel.refreshPractices()

@@ -36,7 +36,6 @@ struct HomeView: View {
                             .opacity(0.7)
                             
                         
-                        
                         Image("mountain_background")
                             .resizable()
                             .scaledToFit()
@@ -60,17 +59,29 @@ struct HomeView: View {
                             .opacity(0.28)
                     }
                     .frame(height: 350)
-                    
-                    Spacer()
                 }
+                .frame(maxHeight: .infinity, alignment: .top)
                 
-                
-//            TODO: 构造合适的scroll视图存放内容卡片
-            VStack{
-                RecommendationSection()
-                
-                RecentPracticeSection()
+            GeometryReader { geometry in
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Spacer()
+                            .frame(minHeight: geometry.size.height * 0.7)
+
+                        FunctionalButtonsSection(sectionTitle: nil)
+
+                        RecommendationSection()
+
+                        RecentPracticeSection()
+
+                        Spacer()
+                            .frame(height: 20)
+                    }
+                    .frame(width: geometry.size.width)
+                }
             }
+            .zIndex(1)
+
             
         
             VStack {

@@ -20,7 +20,7 @@ struct RecommendationCard: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 350, height: 200)
+                    .frame(width: 258, height: 160)
                     .clipped()
                     .opacity(0.6)
             } else {
@@ -28,7 +28,7 @@ struct RecommendationCard: View {
                 Image("推荐图片")
                     .resizable()
                     .scaledToFill() // 占位图也填充整个区域
-                    .frame(width: 350, height: 200)
+                    .frame(width: 258, height: 160)
                     .background(Color.gray.opacity(0.4)) // 占位图的背景色，使其可见
                     .opacity(0.6)
             }
@@ -36,9 +36,9 @@ struct RecommendationCard: View {
             // ---------- 渐变蒙版（如果需要）----------
             // 观察Figma图，文字下方似乎有一个从透明到深色的渐变区域
             LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.6)]),
-                           startPoint: .center, // 渐变从中间开始
-                           endPoint: .top) // 渐变到底部
-                .frame(width: 350, height: 200)
+                           startPoint: .leading, // 渐变从中间开始
+                           endPoint: .trailing) // 渐变到底部
+                .frame(width: 258, height: 160)
 
             // ---------- 文字信息部分 ----------
             VStack(alignment: .leading, spacing: 4) { // 文字内容VStack，文字行间距
@@ -50,12 +50,12 @@ struct RecommendationCard: View {
 
                 Text(item.subtitle)
                     .font(.body)
-                    .foregroundColor(.textInvereSecondary)
+                    .foregroundColor(.textInverseSecondary)
                     .lineLimit(1)
 
                 Text(item.date)
                     .font(.caption)
-                    .foregroundColor(.textInvereSecondary)
+                    .foregroundColor(.textInverseSecondary)
 
             }
             .padding()
@@ -64,7 +64,7 @@ struct RecommendationCard: View {
                        // 这是一个独立的 Text 视图，直接在 ZStack 中使用 .alignment 修饰符
            Text(item.plays)
                .font(.caption)
-               .foregroundColor(.textInvereSecondary)
+               .foregroundColor(.textInverseSecondary)
                .padding()
                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
 //            将文字的逻辑边界扩展到与父视图一样大，然后将其通过alignment对齐到右下角
@@ -73,7 +73,7 @@ struct RecommendationCard: View {
 
         }
         // ---------- 整个卡片的样式 ----------
-        .frame(width: 350, height: 200)
+        .frame(width: 258, height: 160)
         .background(Color.black.opacity(0.1)) // 确保背景色透明度，让图片显示
         .cornerRadius(16) // 整个卡片的圆角
         .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 4) // 阴影更明显
