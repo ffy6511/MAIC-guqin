@@ -13,6 +13,12 @@ import Foundation
 struct HomeView: View {
     @State private var backgroundParallaxOffset: CGFloat = 0
 
+    let previewItems = [
+        FunctionItem(title: "练习模式", icon: "music.note.list") { print("预览：练习模式") },
+        FunctionItem(title: "音阶模式", icon: "scale.3d") { print("预览：音阶模式") },
+        FunctionItem(title: "课程学习", icon: "book.closed.fill") { print("预览：课程学习") }
+    ]
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             
@@ -88,8 +94,10 @@ struct HomeView: View {
                             Spacer()
                                 .frame(minHeight: geometry.size.height * 0.7)
                             
-                            FunctionalButtonsSection(sectionTitle: nil)
+                            FunctionalButtonsSection(sectionTitle: nil, functionItems: previewItems)
+                            
                             RecommendationSection()
+                            
                             RecentPracticeSection()
                             
                             Spacer()

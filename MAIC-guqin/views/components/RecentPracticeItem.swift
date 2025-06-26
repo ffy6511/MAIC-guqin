@@ -20,14 +20,14 @@ struct RecentPracticeItem: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill() // 确保图片填充其设定的 frame
-                    .frame(width: 90, height: 90) // 根据 Figma 图，图片尺寸应是 70x70
+                    .frame(width: 90, height: 90)
                     .clipped() // 裁剪超出部分
                     .cornerRadius(8) // 图片圆角
             } else {
                 // 如果图片不存在，显示默认的占位图
                 Image("近期练习") // SF Symbol 图标
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(width: 90, height: 90) // 占位图尺寸与实际图片一致
                     .foregroundColor(.gray) // 占位图图标颜色
                     .background(Color.white.opacity(0.8)) // 占位图背景色，使其在背景上可见

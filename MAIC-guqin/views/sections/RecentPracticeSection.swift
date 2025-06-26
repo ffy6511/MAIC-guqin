@@ -30,13 +30,17 @@ struct RecentPracticeSection: View {
             }
             .padding(.horizontal)
 
-            VStack(spacing: 10) {
+            VStack(spacing: 4) {
                 ForEach(viewModel.practices) { item in
                     RecentPracticeItem(item: item) // 将整个 Model item 传递给 Item
                 }
             }
             .padding(.horizontal)
         }
-        .padding(.vertical)
+//        .padding(.vertical)
     }
+}
+
+#Preview {
+    RecentPracticeSection()
 }
