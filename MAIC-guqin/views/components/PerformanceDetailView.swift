@@ -116,7 +116,19 @@ struct PerformanceDetailView: View {
         }
         .navigationTitle(item.title) // 设置导航栏标题为曲名
         .navigationBarTitleDisplayMode(.inline) // 标题显示模式为小标题
-        .background(Color("BackgroundPrimary").ignoresSafeArea()) // 背景颜色
+        .background(
+            LinearGradient(
+                gradient: Gradient(stops: [
+                    .init(color: Color(hex: "#9BB1A8").opacity(0.75), location: 0),
+                    .init(color: Color(hex: "#FFFFFF").opacity(0.75), location: 0.21),
+                    .init(color: Color(hex: "#EDF1EF").opacity(0.75), location: 0.80),
+                    .init(color: Color(hex: "#9BB1A8").opacity(0.75), location: 0.96)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea() // 让渐变色扩展到安全区域之外，包括导航栏背后
+        ) // 确保背景色填充整个屏幕
     }
 }
 

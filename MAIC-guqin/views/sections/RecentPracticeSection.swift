@@ -17,8 +17,8 @@ struct RecentPracticeSection: View {
             HStack {
                 Text(title)
                     .font(.title2)
-                    .foregroundColor(Color("TextPrimary"))
                     .padding(.horizontal)
+                    .foregroundColor(Color("TextSecondary"))
                 
                 Spacer()
                 Button {

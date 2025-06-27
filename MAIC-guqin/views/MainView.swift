@@ -25,7 +25,7 @@ struct MainView: View {
                 .tabItem {
                     Label("鉴赏", systemImage: "music.quarternote.3")
                 }
-            SettingView()
+            SettingsView()
                 .tabItem{
                     Label("我的",systemImage: "person")
                 }

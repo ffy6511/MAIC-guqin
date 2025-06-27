@@ -95,6 +95,7 @@ struct HomeView: View {
                                 .frame(minHeight: geometry.size.height * 0.7)
                             
                             FunctionalButtonsSection(sectionTitle: nil, functionItems: previewItems)
+                                .frame(maxWidth: .infinity)
                             
                             RecommendationSection()
                             

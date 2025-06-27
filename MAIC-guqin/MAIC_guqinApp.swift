@@ -10,6 +10,9 @@ import SwiftData
 
 @main
 struct MAIC_guqinApp: App {
+    
+    @StateObject private var appSettings = AppSettings()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -26,6 +29,7 @@ struct MAIC_guqinApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(appSettings)
         }
         .modelContainer(sharedModelContainer)
     }

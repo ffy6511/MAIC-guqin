@@ -38,20 +38,20 @@ struct AppreciationView: View {
            NavigationStack {
                ScrollView(.vertical, showsIndicators: false) {
                    VStack(alignment: .leading) {
+                    
                        
-                       
-                       HStack {
-                           FunctionalButtonsSection(sectionTitle: nil, functionItems: previewItems)
-                               .padding(.bottom)
-                       }
-                       .frame(maxWidth: .infinity) // 确保 FunctionalButtonsSection 填满宽度
+                       FunctionalButtonsSection(sectionTitle: nil, functionItems: previewItems)
+                           .frame(maxWidth: .infinity, minHeight: 100) 
+                           .padding(.horizontal, UIScreen.main.bounds.width * 0.02) // 统一水平内边距
+                           .padding(.bottom, 16) // 底部间距
                        
                        HStack {
                            Text("大师演奏")
                                .font(.title2)
-                               .padding(.leading) // 保持与其他标题一致的左边距
+                               .padding(.leading)
                                .padding(.vertical, 0)
                                .fontWeight(.semibold)
+                               .foregroundColor(Color("TextSecondary"))
                            
                            Spacer()
                            
@@ -105,6 +105,7 @@ struct AppreciationView: View {
                                .fontWeight(.semibold)
                                .padding(.leading) // 保持与其他标题一致的左边距
                                .padding(.vertical, 0)
+                               .foregroundColor(Color("TextSecondary"))
                            
                            Spacer()
                            
@@ -128,7 +129,19 @@ struct AppreciationView: View {
                // <--- 可选: 设置 NavigationStack 的导航栏标题
                .navigationTitle("名琴博物馆") // 主页标题
                .navigationBarTitleDisplayMode(.large)
-               .background(Color("BackgroundPrimary").ignoresSafeArea()) // 确保背景色填充整个屏幕
+               .background(
+                   LinearGradient(
+                       gradient: Gradient(stops: [
+                           .init(color: Color(hex: "#9BB1A8").opacity(0.75), location: 0),
+                           .init(color: Color(hex: "#FFFFFF").opacity(0.75), location: 0.21),
+                           .init(color: Color(hex: "#EDF1EF").opacity(0.75), location: 0.80),
+                           .init(color: Color(hex: "#9BB1A8").opacity(0.75), location: 0.96)
+                       ]),
+                       startPoint: .top,
+                       endPoint: .bottom
+                   )
+                   .ignoresSafeArea() // 让渐变色扩展到安全区域之外，包括导航栏背后
+               ) // 确保背景色填充整个屏幕
            }
        }
    }
