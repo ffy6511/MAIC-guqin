@@ -39,10 +39,9 @@ struct ScoreSection: View {
             ScrollView(.vertical, showsIndicators: false) { // 允许垂直滚动，不显示滚动条
                 LazyVStack(spacing: 12) {
                     ForEach(viewModel.scoreItems) { item in
-                        // <--- 关键修改：将 ScoreItemCard 包装在 NavigationLink 中
+                        // 将 ScoreItemCard 包装在 NavigationLink 中
                         NavigationLink(destination: ScoreDetailView(scoreItem: item)) {
                             ScoreItemCard(item: item)
-                                // .onTapGesture { ... } // NavigationLink 自身处理点击，所以可以移除这个
                         }
                         .buttonStyle(PlainButtonStyle()) // 移除 NavigationLink 默认的蓝色文本样式
                     }

@@ -32,6 +32,8 @@ struct AppreciationView: View {
     
     @StateObject private var scoreSectionViewModel = ScoreSectionViewModel()
     
+    @StateObject private var classicVideoViewModel = ClassicVideoViewModel()
+    
     var body: some View {
            NavigationStack {
                ScrollView(.vertical, showsIndicators: false) {
@@ -78,12 +80,7 @@ struct AppreciationView: View {
                        Group {
                            switch selectedTab {
                            case .classicVideos:
-                               Text("经典影像内容展示区域")
-                                   .frame(maxWidth: .infinity)
-                                   .frame(height: 200) // 示例高度
-                                   .background(Color.green.opacity(0.1))
-                                   .cornerRadius(8)
-                                   .padding(.horizontal)
+                               ClassicVideoSection(sectionTitle: nil, showMoreButton: false, viewModel: classicVideoViewModel)
                            case .animatedShadows:
                                Text("动画剪影内容展示区域")
                                    .frame(maxWidth: .infinity)
