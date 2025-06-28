@@ -31,6 +31,7 @@ struct MainView: View {
                 }
             }
             .environmentObject(appSettings) // 注入 AppSettings 到所有内容视图
+            .preferredColorScheme(appSettings.settings.selectedTheme.colorScheme)
 
             // 使用 safeAreaInset 将自定义 TabBar 放在底部安全区
             .safeAreaInset(edge: .bottom) {

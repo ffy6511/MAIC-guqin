@@ -11,6 +11,8 @@ import Foundation
 
 
 struct HomeView: View {
+    @EnvironmentObject var appSettings: AppSettings
+
     @State private var backgroundParallaxOffset: CGFloat = 0
 
     let previewItems = [

@@ -44,7 +44,20 @@ struct CustomTabBarItem: View {
                 Text(title)
                     .font(.caption)
             }
-            .foregroundColor(isSelected ? .textPrimary : .textTertiary)
+            .padding(.horizontal,24)
+            .padding(.vertical,4)
+            .foregroundColor(isSelected ? .textInversePrimary.opacity(0.9): .textSecondary)
+            .background {
+                if isSelected {
+                    Capsule()
+                        .fill(.ultraThinMaterial.opacity(0.9))
+                        .opacity(0.8)
+                        .overlay(
+                            Capsule().fill(Color.brandSecondary).opacity(0.7)
+                        )
+                }
+            }
+
             .scaleEffect(isPressed ? 0.85 : (bounce ? 1.03 : 1.0))
             .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
             .animation(.spring(response: 0.25, dampingFraction: 0.4), value: bounce)

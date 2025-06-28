@@ -16,6 +16,9 @@ enum MasterPerformanceTab: String, CaseIterable, Identifiable{
 }
 
 struct AppreciationView: View {
+    @EnvironmentObject var appSettings: AppSettings
+
+    
     //    当前功能按钮的items
     let previewItems = [
         // "实物扫描" 按钮
