@@ -7,6 +7,7 @@
 // SettingsView.swift
 
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject var appSettings: AppSettings // 注入 AppSettings 实例
