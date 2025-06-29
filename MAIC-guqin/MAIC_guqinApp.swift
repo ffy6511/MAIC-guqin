@@ -13,6 +13,13 @@ struct MAIC_guqinApp: App {
     
     @StateObject private var appSettings = AppSettings()
     
+    init() {
+            UINavigationBar.appearance().largeTitleTextAttributes = [
+                .font: UIFont.systemFont(ofSize: 28, weight: .semibold),
+                .foregroundColor: UIColor(Color.brandPrimary)
+            ]
+        }
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,

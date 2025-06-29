@@ -129,7 +129,7 @@ struct AppreciationView: View {
                        Spacer()
                    }
                }
-               // <--- 可选: 设置 NavigationStack 的导航栏标题
+               // 设置 NavigationStack 的导航栏标题
                .navigationTitle("名琴博物馆") // 主页标题
                .navigationBarTitleDisplayMode(.large)
                .background(

@@ -57,7 +57,7 @@ class SnowParticle {
         
         let velocity = CGSize(
             width: CGFloat.random(in: -20...20), // 轻微的水平漂移
-            height: CGFloat.random(in: 40...80) * speed // 垂直下落速度
+            height: CGFloat.random(in: 30...80) * speed // 垂直下落速度
         )
         
         let particleScale = Double.random(in: 0.7...1.2) * scale
