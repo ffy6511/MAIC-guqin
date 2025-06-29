@@ -7,6 +7,14 @@
 
 import Foundation
 
+enum WeatherEffectType: String, Codable, CaseIterable, Identifiable {
+    case none = "无"
+    case rain = "细雨"
+    case snow = "飞雪"
+
+    var id: String { self.rawValue }
+}
+
 // 天气效果元素：实现 BackgroundElement 协议
 struct WeatherElement: BackgroundElement {
     let id: String
@@ -16,9 +24,12 @@ struct WeatherElement: BackgroundElement {
     let frames: [BackgroundAnimationFrame]
     let animationSpeed: Double?
     let animationLoopType: BackgroundAnimationLoopType?
+    
+    let weatherEffectType: WeatherEffectType?
+    
 
     // 实现 BackgroundElement 协议的初始化方法
-    init(id: String, name: String, description: String, isAnimated: Bool, frames: [BackgroundAnimationFrame], animationSpeed: Double?, animationLoopType: BackgroundAnimationLoopType?) {
+    init(id: String, name: String, description: String, isAnimated: Bool, frames: [BackgroundAnimationFrame], animationSpeed: Double?, animationLoopType: BackgroundAnimationLoopType?,weatherEffectType: WeatherEffectType?) {
         self.id = id
         self.name = name
         self.description = description
@@ -26,6 +37,7 @@ struct WeatherElement: BackgroundElement {
         self.frames = frames
         self.animationSpeed = animationSpeed
         self.animationLoopType = animationLoopType
+        self.weatherEffectType = weatherEffectType
     }
     
     // 预设的天气效果元素列表
@@ -37,38 +49,29 @@ struct WeatherElement: BackgroundElement {
             isAnimated: false, // 静态
             frames: [],
             animationSpeed: nil,
-            animationLoopType: nil
+            animationLoopType: nil,
+            weatherEffectType: WeatherEffectType.none
         ),
         WeatherElement(
             id: "rain_weather",
             name: "细雨濛濛",
             description: "轻柔雨丝飘落效果。",
             isAnimated: true, // 动画
-            frames: [
-                BackgroundAnimationFrame(imageName: "weather_rain_01"),
-                BackgroundAnimationFrame(imageName: "weather_rain_02"),
-                BackgroundAnimationFrame(imageName: "weather_rain_03")
-                // 确保在 Assets.xcassets 中有这些图片
-            ],
+            frames:[], // 使用粒子效果
             animationSpeed: 0.1, // 每帧间隔0.1秒
-            animationLoopType: .loop // 循环播放
+            animationLoopType: .loop, // 循环播放
+            weatherEffectType: .rain
         ),
         WeatherElement(
             id: "snow_weather",
             name: "漫天飞雪",
             description: "雪花片片飘落效果。",
             isAnimated: true, // 动画
-            frames: [
-                BackgroundAnimationFrame(imageName: "weather_snow_01"),
-                BackgroundAnimationFrame(imageName: "weather_snow_02"),
-                BackgroundAnimationFrame(imageName: "weather_snow_03")
-                // 确保在 Assets.xcassets 中有这些图片
-            ],
+            frames: [],
             animationSpeed: 0.2,
-            animationLoopType: .loop
+            animationLoopType: .loop,
+            weatherEffectType: .snow
         )
-        // 您可以根据需要添加更多 WeatherElement 实例
-        // 例如：WeatherElement(id: "fog_effect", name: "迷雾弥漫", ...)
     ]
     
     // 默认的天气效果元素

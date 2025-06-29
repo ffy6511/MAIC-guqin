@@ -44,15 +44,12 @@ struct ForegroundElement: BackgroundElement {
             id: "bamboo_foreground",
             name: "竹林微风",
             description: "前景竹子轻柔摆动。",
-            isAnimated: true, // 动画
+            isAnimated: false, // 动画
             frames: [
                 BackgroundAnimationFrame(imageName: "foreground_bamboo_01"),
-                BackgroundAnimationFrame(imageName: "foreground_bamboo_02"),
-                BackgroundAnimationFrame(imageName: "foreground_bamboo_03")
-                // 确保在 Assets.xcassets 中有这些图片
             ],
-            animationSpeed: 0.15, // 每帧间隔0.15秒
-            animationLoopType: .loop // 循环播放
+            animationSpeed: nil,
+            animationLoopType: nil
         ),
         ForegroundElement(
             id: "stone_foreground",
@@ -61,15 +58,12 @@ struct ForegroundElement: BackgroundElement {
             isAnimated: false, // 静态
             frames: [
                 BackgroundAnimationFrame(imageName: "foreground_stone_static")
-                // 确保在 Assets.xcassets 中有这张图片
             ],
             animationSpeed: nil,
             animationLoopType: nil
         )
-        // 您可以根据需要添加更多 ForegroundElement 实例
-        // 例如：ForegroundElement(id: "lotus_pond", name: "荷塘月色", ...)
     ]
     
-    // 默认的前景元素（通常是列表中的第一个或一个特定的“无”选项）
+    // 默认的前景元素
     static let defaultElement: ForegroundElement = .allElements.first!
 }

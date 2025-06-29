@@ -46,7 +46,6 @@ struct DistantElement: BackgroundElement {
             isAnimated: false, // 静态
             frames: [
                 BackgroundAnimationFrame(imageName: "distant_mountain_static")
-                // 确保在 Assets.xcassets 中有这张图片
             ],
             animationSpeed: nil,
             animationLoopType: nil
@@ -58,13 +57,10 @@ struct DistantElement: BackgroundElement {
             isAnimated: false, // 静态
             frames: [
                 BackgroundAnimationFrame(imageName: "distant_clouds_static")
-                // 确保在 Assets.xcassets 中有这张图片
             ],
             animationSpeed: nil,
             animationLoopType: nil
         )
-        // 您可以根据需要添加更多 DistantElement 实例
-        // 例如：DistantElement(id: "city_skyline", name: "城市天际线", ...)
     ]
     
     // 默认的远处环境元素

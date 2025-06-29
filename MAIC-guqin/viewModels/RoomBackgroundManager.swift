@@ -30,7 +30,6 @@ class RoomBackgroundManager: ObservableObject {
 
     // 各个动画层的当前帧索引
     @Published private(set) var foregroundFrameIndex: Int = 0 // 前景动画的当前帧索引
-    @Published private(set) var weatherEffectFrameIndex: Int = 0 // 天气动画的当前帧索引
 
     // 各个动画层的 Timer 实例
     private var foregroundTimer: Timer? // 前景动画的计时器
@@ -47,7 +46,7 @@ class RoomBackgroundManager: ObservableObject {
     // MARK: - 动画控制核心逻辑
     
     // 设置所有动画计时器。这是当 currentConfig 或 isGlobalAnimationEnabled 改变时调用的核心方法。
-    private func setupAnimationTimers() {
+     func setupAnimationTimers() {
         // 首先，停止所有当前正在运行的计时器，以避免重复和资源浪费。
         stopAllTimers()
         
@@ -55,11 +54,9 @@ class RoomBackgroundManager: ObservableObject {
         guard isGlobalAnimationEnabled else { return }
 
         // --- 前景动画计时器设置 ---
-        // 只有当：
         // 1. 当前配置的前景元素被标记为动画（isAnimated = true）
         // 2. 该元素定义了动画速度（animationSpeed 不为 nil）
         // 3. 该元素有实际的动画帧
-        // 才启动前景动画计时器。
         if currentConfig.foregroundElement.isAnimated,
            let speed = currentConfig.foregroundElement.animationSpeed,
            !currentConfig.foregroundElement.frames.isEmpty {
@@ -84,36 +81,6 @@ class RoomBackgroundManager: ObservableObject {
                 }
             }
         }
-
-        // --- 天气效果动画计时器设置 ---
-        // 逻辑与前景动画类似，针对天气效果元素。
-        if currentConfig.weatherElement.isAnimated,
-           let speed = currentConfig.weatherElement.animationSpeed,
-           !currentConfig.weatherElement.frames.isEmpty {
-            
-            // 重置天气动画的当前帧索引到第一帧
-            weatherEffectFrameIndex = 0
-            
-            // 创建并启动天气动画计时器
-            weatherEffectTimer = Timer.scheduledTimer(withTimeInterval: speed, repeats: true) { [weak self] _ in
-                guard let self = self else { return }
-                
-                let framesCount = self.currentConfig.weatherElement.frames.count
-                guard framesCount > 0 else { return }
-                
-                // 更新天气动画的当前帧索引，实现循环播放
-                self.weatherEffectFrameIndex = (self.weatherEffectFrameIndex + 1) % framesCount
-                
-                // 如果是“播放一次”的动画类型，并且已经到达最后一帧，则停止计时器
-                if self.currentConfig.weatherElement.animationLoopType == .once && self.weatherEffectFrameIndex == framesCount - 1 {
-                    self.weatherEffectTimer?.invalidate()
-                    self.weatherEffectTimer = nil
-                }
-            }
-        }
-        
-        // 远景元素目前设计为静态，所以不需要计时器。
-        // 如果未来远景也支持动画，可以在这里添加新的计时器逻辑。
     }
     
     // 停止所有正在运行的动画计时器。
@@ -145,16 +112,14 @@ class RoomBackgroundManager: ObservableObject {
 
     // 返回远景当前应该显示的图片名称。
     // 远景元素目前设计为静态，所以直接返回第一帧图片名称。
-    var currentDistantImageName: String {
+    var currentDistantImageName: String{
         return currentConfig.distantElement.frames.first?.imageName ?? ""
     }
     
-    // 返回天气效果当前应该显示的图片名称。
-    // 逻辑与前景动画类似。
-    var currentWeatherEffectImageName: String {
-        guard currentConfig.weatherElement.isAnimated && isGlobalAnimationEnabled else {
-            return currentConfig.weatherElement.frames.first?.imageName ?? ""
-        }
-        return currentConfig.weatherElement.frames[weatherEffectFrameIndex].imageName
+    // 返回当前天气效果类型
+    var currentWeatherEffectType: WeatherEffectType {
+        // 如果全局动画禁用，或者天气元素不是动画类型，则返回 .none
+        guard isGlobalAnimationEnabled else { return .none }
+        return currentConfig.weatherElement.weatherEffectType ?? .none
     }
 }
