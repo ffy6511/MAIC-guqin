@@ -46,14 +46,14 @@ struct CustomTabBarItem: View {
             }
             .padding(.horizontal,24)
             .padding(.vertical,4)
-            .foregroundColor(isSelected ? .textInversePrimary.opacity(0.9): .textSecondary)
+            .foregroundColor(isSelected ? .brandPrimary: .textSecondary)
             .background {
                 if isSelected {
                     Capsule()
                         .fill(.ultraThinMaterial.opacity(0.9))
                         .opacity(0.8)
                         .overlay(
-                            Capsule().fill(Color.brandSecondary).opacity(0.7)
+                            Capsule().fill(Color.brandSecondary).opacity(0.3)
                         )
                 }
             }

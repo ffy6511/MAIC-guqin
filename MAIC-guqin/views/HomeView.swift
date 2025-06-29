@@ -16,9 +16,9 @@ struct HomeView: View {
     @State private var backgroundParallaxOffset: CGFloat = 0
 
     let previewItems = [
-        FunctionItem(title: "练习模式", icon: "music.note.list") { print("预览：练习模式") },
-        FunctionItem(title: "音阶模式", icon: "scale.3d") { print("预览：音阶模式") },
-        FunctionItem(title: "课程学习", icon: "book.closed.fill") { print("预览：课程学习") }
+        FunctionItem(title: "定制古琴", icon: "slider.horizontal.3") { print("预览：定制古琴") },
+        FunctionItem(title: "快速弹奏", icon: "waveform") { print("预览：快速弹奏") },
+        FunctionItem(title: "进入社区", icon: "bubble.left.and.text.bubble.right") { print("预览：进入社区") }
     ]
     
     var body: some View {
@@ -96,6 +96,16 @@ struct HomeView: View {
                             Spacer()
                                 .frame(minHeight: geometry.size.height * 0.7)
                             
+                            // 搜索栏
+                            VStack {
+                                Spacer()
+                                SearchBarView()
+                                    .padding()
+                            }
+                            .shadow(radius: 1)
+                            .zIndex(3)
+                            
+                            
                             FunctionalButtonsSection(sectionTitle: nil, functionItems: previewItems)
                                 .frame(maxWidth: .infinity)
                             
@@ -104,24 +114,14 @@ struct HomeView: View {
                             RecentPracticeSection()
                             
                             Spacer()
-                                .frame(height: 80)
+                                .frame(height: 20)
                         }
                         .frame(width: geometry.size.width)
-                        .padding(.bottom, 20)
                         .zIndex(1)
                     }
                 }
             }
             .zIndex(2)
-
-            // 搜索栏
-            VStack {
-                Spacer()
-                SearchBarView()
-                    .padding(20)
-            }
-            .shadow(radius: 4)
-            .zIndex(3)
         }
         .ignoresSafeArea(.all, edges: .top) // 整个视图忽略顶部安全区域
     }

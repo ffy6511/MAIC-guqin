@@ -17,7 +17,7 @@ struct FunctionalButton: View {
             // 采用 ZStack + VStack 的组合，确保内容定位和弹性
             ZStack(alignment: .topLeading) { // 背景和图标
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color("BrandPrimary").opacity(0.9))
+                    .fill(Color("BrandPrimary").opacity(0.7))
                     .shadow(radius: 4)
 
                 Image(systemName: icon)

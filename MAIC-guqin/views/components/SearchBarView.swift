@@ -20,12 +20,12 @@ struct SearchBarView: View {
         }
         .padding()
         .background(
-            Color("BackgroundPrimary")
-                .opacity(0.5)
-                .background(
-                    BlurView(style: .systemUltraThinMaterial)
-                )
-                .cornerRadius(20)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.regularMaterial.opacity(0.8))  // 使用系统毛玻璃
+               .overlay(
+                   RoundedRectangle(cornerRadius: 20)
+                       .fill(Color("BackgroundPrimary").opacity(0.2)) 
+               )
         )
         .padding(.horizontal)
     }

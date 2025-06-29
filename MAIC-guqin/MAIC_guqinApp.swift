@@ -16,7 +16,7 @@ struct MAIC_guqinApp: App {
     init() {
             UINavigationBar.appearance().largeTitleTextAttributes = [
                 .font: UIFont.systemFont(ofSize: 28, weight: .semibold),
-                .foregroundColor: UIColor(Color.brandPrimary)
+                .foregroundColor: UIColor(Color.brandPrimary.opacity(0.7))
             ]
         }
     
