@@ -12,6 +12,7 @@ import SwiftData
 struct MAIC_guqinApp: App {
     
     @StateObject private var appSettings = AppSettings()
+    @StateObject private var scoreDataManager = ScoreDataManager()
     
     init() {
             UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -37,6 +38,7 @@ struct MAIC_guqinApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(appSettings)
+                .environmentObject(scoreDataManager)
         }
         .modelContainer(sharedModelContainer)
     }

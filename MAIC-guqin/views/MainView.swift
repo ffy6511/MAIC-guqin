@@ -10,12 +10,14 @@ import SwiftUI
 // MainView.swift (更现代的布局方式)
 struct MainView: View {
     @EnvironmentObject var appSettings: AppSettings
+    @EnvironmentObject var scoreDataManager: ScoreDataManager
+    
     @State private var selectedTab = 0
     let tabItems = [
-        (icon: "house", title: "首页"),
-        (icon: "music.note.house", title: "琴室"),
-        (icon: "music.quarternote.3", title: "鉴赏"),
-        (icon: "person", title: "我的")
+        (icon: "house", selectedIcon: "house.fill", title: "首页"),
+        (icon: "music.note.house", selectedIcon: "music.note.house.fill", title: "琴室"),
+        (icon: "headset.circle", selectedIcon: "headset.circle.fill", title: "鉴赏"), 
+        (icon: "person", selectedIcon: "person.fill", title: "我的")
     ]
 
     var body: some View {
@@ -31,6 +33,7 @@ struct MainView: View {
                 }
             }
             .environmentObject(appSettings) // 注入 AppSettings 到所有内容视图
+            .environmentObject(scoreDataManager) // 注入 ScoreDataManager 到所有内容视图
             .preferredColorScheme(appSettings.settings.selectedTheme.colorScheme)
 
             // 使用 safeAreaInset 将自定义 TabBar 放在底部安全区

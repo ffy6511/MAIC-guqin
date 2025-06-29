@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScoreDetailView: View {
     let scoreItem: ScoreItem // 接收要显示的曲谱数据
+    
 
     var body: some View {
         ScrollView {
@@ -36,17 +37,27 @@ struct ScoreDetailView: View {
                         .foregroundColor(Color("TextSecondary"))
                 }
 
-                // 标签
-                HStack(spacing: 8) {
-                    ForEach(scoreItem.tags, id: \.self) { tag in
-                        Text(tag)
-                            .font(.subheadline)
-                            .foregroundColor(Color("TextSecondary"))
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color("BackgroundTertiary"))
-                            .cornerRadius(6)
+                // 标签，添加点击功能
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(scoreItem.tags, id: \.self) { tag in
+                            NavigationLink(destination: TaggedScoresView(tag: tag)) {
+                                Text(tag)
+                                    .font(.subheadline)
+                                    .foregroundColor(Color("TextSecondary"))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(Color("BackgroundTertiary"))
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(Color("BrandPrimary").opacity(0.3), lineWidth: 1)
+                                    )
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
                     }
+                    .padding(.horizontal)
                 }
 
                 // 跟练人数
@@ -168,6 +179,7 @@ struct ScoreDetailView_Previews: PreviewProvider {
         // 在预览中，你需要一个 NavigationStack 来正确预览详情页的导航栏
         NavigationStack {
             ScoreDetailView(scoreItem: sampleItem)
+               
         }
     }
 }

@@ -12,13 +12,14 @@ struct CustomTabBar: View {
     @EnvironmentObject var appSettings: AppSettings // 注入 AppSettings 实例
     
     @Binding var selectedIndex: Int
-    let items: [(icon: String, title: String)]
+    let items: [(icon: String, selectedIcon: String, title: String)]
 
     var body: some View {
         HStack {
             ForEach(items.indices, id: \.self) { idx in
                 CustomTabBarItem(
                     icon: items[idx].icon,
+                    selectedIcon: items[idx].selectedIcon,
                     title: items[idx].title,
                     isSelected: selectedIndex == idx
                 ) {

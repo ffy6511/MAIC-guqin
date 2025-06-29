@@ -18,6 +18,7 @@ enum MasterPerformanceTab: String, CaseIterable, Identifiable{
 struct AppreciationView: View {
     @EnvironmentObject var appSettings: AppSettings
 
+    @StateObject private var scoreDataManager = ScoreDataManager()
     
     //    当前功能按钮的items
     let previewItems = [
@@ -69,17 +70,7 @@ struct AppreciationView: View {
                        .padding(.horizontal)
                        .padding(.bottom,4)
                        
-                       // tab选择器
-                       Picker("choose mode", selection: $selectedTab){
-                           ForEach(MasterPerformanceTab.allCases){tab in
-                               Text(tab.rawValue)
-                                   .tag(tab)
-                           }
-                       }
-                       .pickerStyle(.segmented)
-                       .padding(.horizontal)
-                       .padding(.bottom,8)
-                       
+                      
                        Group {
                            switch selectedTab {
                            case .classicVideos:
@@ -101,6 +92,17 @@ struct AppreciationView: View {
                            }
                        }
                        .padding(.bottom) // 内容区域底部间距
+                       
+                       // tab选择器
+                       Picker("choose mode", selection: $selectedTab){
+                           ForEach(MasterPerformanceTab.allCases){tab in
+                               Text(tab.rawValue)
+                                   .tag(tab)
+                           }
+                       }
+                       .pickerStyle(.segmented)
+                       .padding(.horizontal)
+                       .padding(.bottom,8)
                        
                        HStack {
                            Text("动态曲谱")
@@ -125,6 +127,7 @@ struct AppreciationView: View {
                        
                       
                        ScoreSection(sectionTitle: nil, showMoreButton: false, viewModel: scoreSectionViewModel)
+                           .environmentObject(scoreDataManager)
                        
                        Spacer()
                    }

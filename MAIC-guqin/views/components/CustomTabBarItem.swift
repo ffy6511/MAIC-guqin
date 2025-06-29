@@ -12,6 +12,7 @@ struct CustomTabBarItem: View {
     @EnvironmentObject var appSettings: AppSettings
 
     let icon: String
+    let selectedIcon: String
     let title: String
     let isSelected: Bool
     let action: () -> Void
@@ -39,7 +40,7 @@ struct CustomTabBarItem: View {
             action()
         }) {
             VStack(spacing: 4) {
-                Image(systemName: icon)
+                Image(systemName: isSelected ? selectedIcon : icon)
                     .font(.system(size: 22, weight: .semibold))
                 Text(title)
                     .font(.caption)
@@ -53,7 +54,7 @@ struct CustomTabBarItem: View {
                         .fill(.ultraThinMaterial.opacity(0.9))
                         .opacity(0.8)
                         .overlay(
-                            Capsule().fill(Color.brandSecondary).opacity(0.3)
+                            Capsule().fill(Color.brandSecondary).opacity(0.5)
                         )
                 }
             }

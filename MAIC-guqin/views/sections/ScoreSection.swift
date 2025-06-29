@@ -10,6 +10,9 @@ import SwiftUI
 struct ScoreSection: View {
     let sectionTitle: String? // Section 标题，例如 "动态曲谱"
     let showMoreButton: Bool // 是否显示右侧的“更多”按钮
+    
+    @EnvironmentObject var scoreDataManager: ScoreDataManager
+    
     @ObservedObject var viewModel: ScoreSectionViewModel // 接收 ViewModel
 
     var body: some View {
@@ -57,12 +60,13 @@ struct ScoreSection: View {
 struct ScoreSection_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = ScoreSectionViewModel()
-        // <--- 关键修改：在预览中也用 NavigationStack 包裹
+        // 在预览中也用 NavigationStack 包裹
         NavigationStack {
             VStack {
                 ScoreSection(sectionTitle: "动态曲谱", showMoreButton: true, viewModel: viewModel)
                     .frame(width: 380)
                     .background(Color.white)
+                    .environmentObject(ScoreDataManager())
             }
         }
         .previewLayout(.sizeThatFits)
