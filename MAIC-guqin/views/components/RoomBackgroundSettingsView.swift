@@ -24,20 +24,23 @@ struct RoomBackgroundSettingsView: View {
         var id: String { self.rawValue }
     }
     
+    let frame_height: CFloat = 300
+    
     @State private var selectedCategory: BackgroundCategory = .foreground // 默认选中前景主体
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) { // 使用 VStack 来垂直堆叠预览、分类选择和横向滚动列表
                 // MARK: - 组合效果预览区域 (放到最上方)
-                // 这里创建一个小型的 ZStack 来模拟 RoomView 的背景叠加效果
+                // 创建一个小型的 ZStack 来模拟 RoomView 的背景叠加效果
                 ZStack {
                     // 1. 远处环境层
                     if !backgroundManager.currentConfig.distantElement.frames.isEmpty {
                         Image(backgroundManager.currentConfig.distantElement.frames.first!.imageName)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
                             .opacity(0.5)
+                            .frame(height: CGFloat(frame_height))
                     } else {
                         Color.gray.opacity(0.1) // 占位背景
                     }
@@ -46,8 +49,9 @@ struct RoomBackgroundSettingsView: View {
                     if !backgroundManager.currentConfig.foregroundElement.frames.isEmpty {
                         Image(backgroundManager.currentConfig.foregroundElement.frames.first!.imageName)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
                             .opacity(0.7)
+                            .frame(height: CGFloat(frame_height))
                     }
                     
                     // 3. 天气效果层 - 根据 weatherEffectType 渲染粒子效果或图片
@@ -55,7 +59,6 @@ struct RoomBackgroundSettingsView: View {
                     case nil:
                         EmptyView() // 无天气效果
                     case .rain:
-                        // 假设你已经创建了 RainEffectView
                          RainEffectView(isEnabled: backgroundManager.isGlobalAnimationEnabled, animationScale: 0.5)
                              .allowsHitTesting(false)
                        
@@ -74,7 +77,7 @@ struct RoomBackgroundSettingsView: View {
                         }
                     }
                 }
-                .frame(height: 300) // 预览区域高度
+                .frame(height: CGFloat(frame_height))
                 .clipped() // 裁剪超出部分
                 .cornerRadius(10)
                 .padding(.horizontal)

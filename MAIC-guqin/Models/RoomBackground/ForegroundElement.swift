@@ -32,15 +32,6 @@ struct ForegroundElement: BackgroundElement {
     // 预设的前景元素列表
     static let allElements: [ForegroundElement] = [
         ForegroundElement(
-            id: "no_foreground",
-            name: "无前景",
-            description: "不显示任何前景装饰。",
-            isAnimated: false, // 静态
-            frames: [], // 没有图片，或者可以放一个透明的占位图
-            animationSpeed: nil,
-            animationLoopType: nil
-        ),
-        ForegroundElement(
             id: "bamboo_foreground",
             name: "竹林微风",
             description: "前景竹子轻柔摆动。",
@@ -48,6 +39,15 @@ struct ForegroundElement: BackgroundElement {
             frames: [
                 BackgroundAnimationFrame(imageName: "foreground_bamboo_01"),
             ],
+            animationSpeed: nil,
+            animationLoopType: nil
+        ),
+        ForegroundElement(
+            id: "no_foreground",
+            name: "无前景",
+            description: "不显示任何前景装饰。",
+            isAnimated: false, // 静态
+            frames: [], // 没有图片，或者可以放一个透明的占位图
             animationSpeed: nil,
             animationLoopType: nil
         ),

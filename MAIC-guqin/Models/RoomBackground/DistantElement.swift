@@ -30,15 +30,7 @@ struct DistantElement: BackgroundElement {
 
     // 预设的远处环境元素列表
     static let allElements: [DistantElement] = [
-        DistantElement(
-            id: "no_distant",
-            name: "无远景",
-            description: "不显示远处环境。",
-            isAnimated: false,
-            frames: [],
-            animationSpeed: nil,
-            animationLoopType: nil
-        ),
+
         DistantElement(
             id: "mountain_distant",
             name: "静谧山水",
@@ -47,6 +39,15 @@ struct DistantElement: BackgroundElement {
             frames: [
                 BackgroundAnimationFrame(imageName: "distant_mountain_static")
             ],
+            animationSpeed: nil,
+            animationLoopType: nil
+        ),
+        DistantElement(
+            id: "no_distant",
+            name: "无远景",
+            description: "不显示远处环境。",
+            isAnimated: false,
+            frames: [],
             animationSpeed: nil,
             animationLoopType: nil
         ),
