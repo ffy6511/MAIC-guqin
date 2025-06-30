@@ -142,76 +142,28 @@ struct RoomView: View {
                     }
                     .frame(maxHeight: .infinity)
                     
-                    // 4. 底部三个按钮 - 保持原来的文字内容，优化样式，添加导航跳转
+                    // 4. 底部三个按钮 - 使用 RoomNavBarItem 组件
                     HStack(spacing: 16) {
-                        // 环境系统按钮
                         NavigationLink(destination: RoomBackgroundSettingsView().environmentObject(backgroundManager)) {
-                            VStack(spacing: 8) {
-                                Image(systemName: "cloud.fill")
-                                    .font(.title2)
-                                    .foregroundColor(.blue)
-                                Text("环境系统")
-                                    .font(.caption)
-                                    .fontWeight(.medium)
-                                    .foregroundColor(.primary)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 20)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(16)
-                            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                            RoomNavBarItem(icon: "cloud.fill", title: "环境系统")
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            let impact = UIImpactFeedbackGenerator(style: .light)
-                            impact.impactOccurred()
-                        })
+                        .buttonStyle(NavigableButtonStyle())
                         
-                        // 情景录制按钮
                         NavigationLink(destination: ScenarioRecordingView()) {
-                            VStack(spacing: 8) {
-                                Image(systemName: "mic.fill")
-                                    .font(.title2)
-                                    .foregroundColor(.red)
-                                Text("情景录制")
-                                    .font(.caption)
-                                    .fontWeight(.medium)
-                                    .foregroundColor(.primary)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 20)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(16)
-                            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                            RoomNavBarItem(icon: "mic.fill", title: "情景录制")
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            let impact = UIImpactFeedbackGenerator(style: .light)
-                            impact.impactOccurred()
-                        })
+                        .buttonStyle(NavigableButtonStyle())
                         
-                        // 多人琴室按钮
                         NavigationLink(destination: MultiplayerRoomView()) {
-                            VStack(spacing: 8) {
-                                Image(systemName: "person.3.fill")
-                                    .font(.title2)
-                                    .foregroundColor(.green)
-                                Text("多人琴室")
-                                    .font(.caption)
-                                    .fontWeight(.medium)
-                                    .foregroundColor(.primary)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 20)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(16)
-                            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                            RoomNavBarItem(icon: "person.3.fill", title: "多人琴室")
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            let impact = UIImpactFeedbackGenerator(style: .light)
-                            impact.impactOccurred()
-                        })
+                        .buttonStyle(NavigableButtonStyle())
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 30) // 增加底部间距，因为没有导航栏了
+                    .padding(.horizontal, 40)
+//                    .padding(.bottom, 10)
+                    .padding(.top, 10)
+
+
                 }
                 .onAppear {
                     backgroundManager.setupAnimationTimers()
@@ -295,5 +247,6 @@ struct MultiplayerRoomView: View {
 struct RoomView_Previews: PreviewProvider {
     static var previews: some View {
         RoomView()
+            .environmentObject(AppSettings())
     }
 }
