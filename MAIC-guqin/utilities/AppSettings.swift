@@ -32,7 +32,7 @@ class AppSettings: ObservableObject {
         // 在 init() 中，所有存储属性（包括 _userSettingsData 和 settings）现在都有了初始值。
 
         // 尝试从 UserDefaults 加载实际的设置数据
-        if let data = _userSettingsData, // <<-- 更改点2：直接访问 _userSettingsData
+        if let data = _userSettingsData, // 直接访问 _userSettingsData
            let decodedSettings = try? JSONDecoder().decode(UserSetting.self, from: data) {
             // 只有当成功解码时，才更新 settings。
             // 这会触发 didSet，将新的设置保存回 UserDefaults，并更新图标。
@@ -60,6 +60,38 @@ class AppSettings: ObservableObject {
         }
         lastUsageDate = now
     }
+    
+    // MARK:  头像管理
+    /// 设置为系统默认头像
+    func setSystemDefaultAvatar() {
+        settings.setSystemDefaultAvatar()
+    }
+    
+    /// 设置自定义头像
+    func setCustomAvatar(_ image: UIImage?) {
+        settings.setCustomAvatar(from: image)
+    }
+    
+    /// 获取当前头像类型
+    var avatarType: AvatarType {
+        return settings.avatarType
+    }
+    
+    /// 获取用户头像 UIImage
+    func getUserAvatarImage() -> UIImage? {
+        return settings.getAvatarImage()
+    }
+    
+    /// 获取用户头像 SwiftUI Image
+    func getUserAvatarSwiftUIImage() -> Image {
+        return settings.getAvatarSwiftUIImage()
+    }
+    
+    /// 检查是否有自定义头像
+    var hasCustomAvatar: Bool {
+        return settings.hasCustomAvatar
+    }
+    
     
     // 用于测试
     func simulateDayChange() {
