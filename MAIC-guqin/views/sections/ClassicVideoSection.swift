@@ -46,7 +46,7 @@ struct ClassicVideoSection: View {
                         NavigationLink(destination: PerformanceDetailView(item:item)) {
                             ClassicVideoCard(item: item)
                         }
-                        .buttonStyle(PlainButtonStyle()) // 移除 NavigationLink 默认的蓝色文本样式
+                        .buttonStyle(CardPressEffectStyle()) // 使用自定义的style
                     }
                 }
                 .padding(.horizontal) // 为所有卡片及其容器添加水平内边距

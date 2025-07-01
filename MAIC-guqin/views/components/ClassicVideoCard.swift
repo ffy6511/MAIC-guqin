@@ -18,8 +18,7 @@ struct ClassicVideoCard: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 200, height: 300)
                 .clipped() // 裁剪超出部分
-                .cornerRadius(12) // 卡片圆角，与截图一致
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5) // 卡片阴影
+                .cornerRadius(12) // 卡片圆角
                 .overlay(
                         LinearGradient(
                             gradient: Gradient(colors: [
@@ -80,17 +79,9 @@ struct ClassicVideoCard: View {
             }
             .padding(20) // 文字内容的内边距
             
-            // 3. 播放按钮 (居中)
-//            if item.videoURL != nil {
-//                Image(systemName: "play.circle.fill")
-//                    .font(.system(size: 80)) // 巨大的播放图标
-//                    .foregroundColor(.white.opacity(0.8))
-//                    .shadow(color: .black.opacity(0.5), radius: 5)
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity) // 让播放按钮在 ZStack 中居中
-//            }
             
             Image(systemName: "play.circle.fill")
-               .font(.system(size: 60)) // 巨大的播放图标
+               .font(.system(size: 60)) // 播放图标
                .foregroundColor(.white.opacity(0.6))
                .shadow(color: .black.opacity(0.5), radius: 5)
                .frame(maxWidth: .infinity, maxHeight: .infinity)

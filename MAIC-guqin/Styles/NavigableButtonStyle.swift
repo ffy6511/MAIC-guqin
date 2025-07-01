@@ -26,18 +26,17 @@ struct NavigableButtonStyle: ButtonStyle {
             // 按下时的缩放效果
             .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
             .animation(.spring(response: 0.3, dampingFraction: 0.6), value: configuration.isPressed)
-            // **核心改变：移除 onLongPressGesture，使用 onChange 监听 isPressed 变化来触发触觉反馈**
+            // 移除 onLongPressGesture，使用 onChange 监听 isPressed 变化来触发触觉反馈
             .onChange(of: configuration.isPressed) { isPressed in
                 if isPressed && appSettings.settings.hapticFeedbackEnabled {
                     let impact = UIImpactFeedbackGenerator(style: .medium)
                     impact.impactOccurred()
                 }
             }
-            // 移除 .contentShape(Rectangle())，通常不是必须的，有时可能引起不必要的复杂性
     }
 }
 
-// 预览 (可选，用于单独查看样式)
+// 预览
 struct NavigableButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         Button(action: {}) {

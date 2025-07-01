@@ -85,9 +85,7 @@ struct HomeView: View {
 
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(.ultraThinMaterial.opacity(0.5))
-                                .padding(.bottom, 20)
-
-                            Spacer(minLength: 80)
+                                .padding(.bottom, 10)
                         }
                         .background(Color.clear)
                         .zIndex(0)
