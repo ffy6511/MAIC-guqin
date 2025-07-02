@@ -28,7 +28,7 @@ struct MainView: View {
                 case 0: HomeView()
                 case 1: RoomView()
                 case 2: AppreciationView()
-                case 3: SettingsView()
+                case 3: PersonalView()
                 default: EmptyView()
                 }
             }
