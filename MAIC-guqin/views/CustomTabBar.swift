@@ -29,7 +29,7 @@ struct CustomTabBar: View {
             }
         }
         .padding(.vertical, 4)
-        .background(.ultraThinMaterial.opacity(0.8))
+        .background(.ultraThinMaterial.opacity(0.9))
         .cornerRadius(24)
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2) // 轻微阴影
         .padding(.horizontal) // 留出左右边距，让 TabBar 看起来不顶满屏幕宽度

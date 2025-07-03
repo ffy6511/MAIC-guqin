@@ -40,7 +40,7 @@ struct HomeView: View {
                 .zIndex(0)
                 
                 // 图片内容
-                VStack(spacing: -180) {
+                VStack(spacing: -280) {
                     // 顶部大图
                     ZStack {
                         Image("Ellipse")
@@ -58,19 +58,23 @@ struct HomeView: View {
                     }
                     
                     // 古琴图片
-                    ZStack {
-                        Image("guqin")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 300)
-                            .opacity(0.9)
-                        
-                        Image("words")
-                            .resizable()
-                            .scaledToFit()
-                            .opacity(0.28)
+                    GeometryReader { geometry in
+                        ZStack {
+                            Image("guqin")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 270)
+                                .opacity(0.9)
+                            
+                            Image("words")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: geometry.size.width*0.7)
+                                .offset(x: -5, y: 180)
+                                .opacity(0.28)
+                        }
+                        .frame(width: geometry.size.width,  alignment: .center)
                     }
-                    .frame(height: 350)
                     
                     Spacer() // 推到顶部
                 }
@@ -107,6 +111,7 @@ struct HomeView: View {
                                 
                                 FunctionalButtonsSection(sectionTitle: nil, functionItems: previewItems)
                                     .frame(maxWidth: .infinity)
+                                    
                                 
                                 RecommendationSection()
                                 
@@ -115,10 +120,14 @@ struct HomeView: View {
                                 Spacer()
                                     .frame(height: 20)
                             }
+                            .padding(.horizontal, 8)
                             .frame(width: geometry.size.width)
                             .zIndex(1)
+
+                            
                         }
                     }
+                    
                 }
                 .zIndex(2)
             }
@@ -133,4 +142,3 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
-

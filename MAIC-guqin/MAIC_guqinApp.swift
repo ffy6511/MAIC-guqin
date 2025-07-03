@@ -15,11 +15,19 @@ struct MAIC_guqinApp: App {
     @StateObject private var scoreDataManager = ScoreDataManager()
     
     init() {
-            UINavigationBar.appearance().largeTitleTextAttributes = [
-                .font: UIFont.systemFont(ofSize: 28, weight: .semibold),
-                .foregroundColor: UIColor(Color.brandPrimary.opacity(0.7))
-            ]
-        }
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithTransparentBackground() // 透明背景
+        navBarAppearance.largeTitleTextAttributes = [
+            .font: UIFont.systemFont(ofSize: 28, weight: .semibold),
+            .foregroundColor: UIColor(Color.brandPrimary.opacity(0.7))
+        ]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor(Color.brandPrimary.opacity(0.7))
+        ]
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+    }
+
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([

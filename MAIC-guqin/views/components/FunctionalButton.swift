@@ -21,7 +21,7 @@ struct FunctionalButton: View {
                     .shadow(radius: 4)
 
                 Image(systemName: icon)
-                    .font(.largeTitle)
+                    .font(.title)
                     .foregroundColor(Color.white)
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0)) // 图标定位
                     .shadow(radius: 2)
