@@ -141,7 +141,7 @@ struct AppreciationView: View {
                            .init(color: Color(hex: "#9BB1A8").opacity(0.75), location: 0),
                            .init(color: Color(hex: "#FFFFFF").opacity(0.75), location: 0.21),
                            .init(color: Color(hex: "#EDF1EF").opacity(0.75), location: 0.80),
-                           .init(color: Color(hex: "#9BB1A8").opacity(0.75), location: 0.96)
+                           .init(color: Color(hex: "#9BB1A8").opacity(0.75), location: 0.96)    
                        ]),
                        startPoint: .top,
                        endPoint: .bottom
