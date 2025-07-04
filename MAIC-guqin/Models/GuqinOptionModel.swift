@@ -161,8 +161,8 @@ enum GuqinStringsCount: String, CaseIterable, Identifiable, Codable {
 
 // MARK: - 琴弦材质枚举
 enum GuqinStringsMaterial: String, CaseIterable, Identifiable, Codable {
-    case silk = "丝弦"
     case nylon = "尼龙弦"
+    case silk = "丝弦"
     case steel = "钢弦"
 
     var id: String { self.rawValue }
@@ -170,10 +170,10 @@ enum GuqinStringsMaterial: String, CaseIterable, Identifiable, Codable {
     /// 材质颜色（用于琴弦着色）
     var materialColor: Color {
         switch self {
-        case .silk:
-            return Color.yellow.opacity(0.8)
         case .nylon:
             return Color.white.opacity(0.9)
+        case .silk:
+            return Color.yellow.opacity(0.8)
         case .steel:
             return Color.gray.opacity(0.8)
         }
@@ -182,10 +182,10 @@ enum GuqinStringsMaterial: String, CaseIterable, Identifiable, Codable {
     /// 材质图片名称（用于选择按钮）
     var materialImageName: String {
         switch self {
-        case .silk:
-            return "strings_material_silk"
         case .nylon:
             return "strings_material_nylon"
+        case .silk:
+            return "strings_material_silk"
         case .steel:
             return "strings_material_steel"
         }

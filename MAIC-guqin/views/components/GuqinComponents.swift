@@ -158,7 +158,7 @@ struct OptionThumbnailButton: View {
                         thumbnailImage
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: buttonSize - 8, height: buttonSize - 8)
+                            .frame(width: buttonSize - 4, height: buttonSize - 4)
                             .clipShape(RoundedRectangle(cornerRadius: 6))
                     } else if let thumbnailColor = thumbnailColor {
                         RoundedRectangle(cornerRadius: 6)
@@ -169,7 +169,7 @@ struct OptionThumbnailButton: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(
-                            isSelected ? Color.blue : Color.clear,
+                            isSelected ? Color.accentColor : Color.clear,
                             lineWidth: isSelected ? 2 : 0
                         )
                 )
@@ -178,13 +178,14 @@ struct OptionThumbnailButton: View {
                 // 标题文字
                 Text(title)
                     .font(.caption2)
-                    .foregroundColor(isSelected ? .blue : .secondary)
+                    .foregroundColor(isSelected ? .accentColor : .secondary)
                     .lineLimit(1)
                     .frame(width: buttonSize)
             }
         }
         .buttonStyle(PlainButtonStyle())
         .animation(.easeInOut(duration: 0.2), value: isSelected)
+        .padding(.vertical,4)
     }
 }
 
@@ -201,18 +202,18 @@ struct CategoryIconButton: View {
             VStack(spacing: 4) {
                 ZStack {
                     Circle()
-                        .fill(isSelected ? Color.blue.opacity(0.2) : Color.gray.opacity(0.1))
+                        .fill(isSelected ? Color.accentColor.opacity(0.2) : Color.gray.opacity(0.1))
                         .frame(width: iconSize, height: iconSize)
                     
                     Image(systemName: systemIconName)
                         .font(.system(size: 20, weight: .medium))
-                        .foregroundColor(isSelected ? .blue : .secondary)
+                        .foregroundColor(isSelected ? .accentColor : .secondary)
                 }
-                .scaleEffect(isSelected ? 1.1 : 1.0)
+                .scaleEffect(isSelected ? 1.05 : 1.0)
                 
                 Text(category.rawValue)
                     .font(.caption2)
-                    .foregroundColor(isSelected ? .blue : .secondary)
+                    .foregroundColor(isSelected ? .accentColor : .secondary)
                     .lineLimit(1)
             }
         }
@@ -227,7 +228,7 @@ struct CategoryIconButton: View {
         case .material:
             return "paintbrush.fill"
         case .inscription:
-            return "textformat.abc"
+            return "text.word.spacing"
         case .stringsCount:
             return "waveform"
         case .stringsMaterial:
@@ -245,18 +246,18 @@ struct CustomizationOptionSelector: View {
     var body: some View {
         VStack(spacing: 12) {
             // 当前类别标题
-            HStack {
-                Text(viewModel.selectedCategory.rawValue)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                
-                Spacer()
-                
-                Text("选择\(viewModel.selectedCategory.rawValue)")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            .padding(.horizontal)
+//            HStack {
+//                Text(viewModel.selectedCategory.rawValue)
+//                    .font(.headline)
+//                    .foregroundColor(.primary)
+//                
+//                Spacer()
+//                
+//                Text("选择合适的\(viewModel.selectedCategory.rawValue)")
+//                    .font(.caption)
+//                    .foregroundColor(.secondary)
+//            }
+//            .padding(.horizontal)
             
             // 选项滚动视图
             ScrollView(.horizontal, showsIndicators: false) {

@@ -15,22 +15,15 @@ struct GuqinCustomizationView: View {
         NavigationView {
             GeometryReader { geometry in
                 VStack(spacing: 0) {
-                    // 主要内容区域
-                    HStack(spacing: 0) {
-                        // 左侧边栏 - 琴身定制
-                        leftSidebar
-                            .frame(width: 80)
-                        
-                        // 中央预览区域
-                        centerPreviewArea
-                            .frame(maxWidth: .infinity)
-                        
-                        // 右侧边栏 - 琴弦定制
-                        rightSidebar
-                            .frame(width: 80)
-                    }
-                    .frame(maxHeight: .infinity)
-                    
+                    // 古琴预览区域
+                    centerPreviewArea
+                        .frame(maxHeight: .infinity)
+
+                    // 类别选择滚动条
+                    categoryScrollView
+                        .frame(height: 80)
+                        .padding(.vertical, 8)
+
                     // 底部选择面板
                     CustomizationOptionSelector(viewModel: viewModel)
                         .frame(height: 140)
@@ -40,8 +33,9 @@ struct GuqinCustomizationView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {
+
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack(spacing: 16) {
+                    HStack(spacing: 8) {
                         Button(action: {
                             viewModel.togglePreviewMode()
                         }) {
@@ -49,7 +43,7 @@ struct GuqinCustomizationView: View {
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.primary)
                         }
-                        
+
                         Button(action: {
                             viewModel.resetToDefault()
                         }) {
@@ -76,17 +70,12 @@ struct GuqinCustomizationView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
-    // MARK: - 左侧边栏
-    private var leftSidebar: some View {
-        VStack(spacing: 16) {
-            Text("琴身")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.top, 8)
-            
-            VStack(spacing: 12) {
-                ForEach(viewModel.bodyCategories) { category in
+
+    // MARK: - 类别选择滚动视图
+    private var categoryScrollView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 16) {
+                ForEach(CustomizationCategory.allCases) { category in
                     CategoryIconButton(
                         category: category,
                         isSelected: viewModel.selectedCategory == category
@@ -95,55 +84,22 @@ struct GuqinCustomizationView: View {
                     }
                 }
             }
-            
-            Spacer()
+            .padding(.horizontal, 16)
+            .padding(.vertical,8)
         }
-        .padding(.horizontal, 8)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color(UIColor.systemBackground).opacity(0.8))
-                .shadow(color: .black.opacity(0.05), radius: 3, x: 2, y: 0)
+                .shadow(color: .black.opacity(0.05), radius: 3, x: 0, y: 2)
         )
-        .padding(.vertical, 16)
-        .padding(.leading, 8)
-    }
-    
-    // MARK: - 右侧边栏
-    private var rightSidebar: some View {
-        VStack(spacing: 16) {
-            Text("琴弦")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.top, 8)
-            
-            VStack(spacing: 12) {
-                ForEach(viewModel.stringsCategories) { category in
-                    CategoryIconButton(
-                        category: category,
-                        isSelected: viewModel.selectedCategory == category
-                    ) {
-                        viewModel.selectCategory(category)
-                    }
-                }
-            }
-            
-            Spacer()
-        }
-        .padding(.horizontal, 8)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color(UIColor.systemBackground).opacity(0.8))
-                .shadow(color: .black.opacity(0.05), radius: 3, x: -2, y: 0)
-        )
-        .padding(.vertical, 16)
-        .padding(.trailing, 8)
+        .padding(.horizontal, 16)
     }
     
     // MARK: - 中央预览区域
     private var centerPreviewArea: some View {
-        VStack {
+        VStack(spacing: 16) {
             Spacer()
-            
+
             // 古琴预览
             GuqinPreviewView(
                 shapeImageName: viewModel.currentShapeImageName,
@@ -157,14 +113,14 @@ struct GuqinCustomizationView: View {
             )
             .scaleEffect(viewModel.isPreviewMode ? 1.2 : 1.0)
             .animation(.easeInOut(duration: 0.3), value: viewModel.isPreviewMode)
-            
+
             // 配置信息
             VStack(spacing: 4) {
                 Text(viewModel.currentConfiguration.displayName)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
-                
+
                 if viewModel.isPreviewMode {
                     Text("预览模式")
                         .font(.caption2)
@@ -177,11 +133,10 @@ struct GuqinCustomizationView: View {
                         )
                 }
             }
-            .padding(.top, 16)
-            
+
             Spacer()
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 20)
     }
 }
 

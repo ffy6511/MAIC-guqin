@@ -94,7 +94,7 @@ struct PersonalView: View {
                                }
                                .padding()
                                .frame(maxWidth: .infinity)
-                               .frame(height: 80)
+                               .frame(height: 100)
                                .background(
                                    RoundedRectangle(cornerRadius: 12)
                                        .fill(Color(UIColor.systemBackground))
@@ -104,12 +104,54 @@ struct PersonalView: View {
                            }
                            .buttonStyle(PlainButtonStyle())
 
-                           Text("社区画廊")
-                               .frame(maxWidth: .infinity)
-                               .frame(height: 150)
-                               .background(Color.gray.opacity(0.1))
-                               .cornerRadius(8)
-                               .padding(.horizontal)
+                           // 社区画廊卡片(TODO)
+                           VStack(alignment: .leading, spacing: 12) {
+                               HStack {
+                                   Image(systemName: "photo.on.rectangle.angled")
+                                       .font(.title2)
+                                       .foregroundColor(.brandSecondary)
+                                   Text("社区画廊")
+                                       .font(.headline)
+                                       .foregroundColor(.primary)
+                                   Spacer()
+                                   Text("即将上线")
+                                       .font(.caption)
+                                       .foregroundColor(.secondary)
+                                       .padding(.horizontal, 8)
+                                       .padding(.vertical, 2)
+                                       .background(Color.green.opacity(0.15))
+                                       .cornerRadius(6)
+                               }
+                               
+                               Text("浏览和分享来自社区的古琴设计作品")
+                                   .font(.caption)
+                                   .foregroundColor(.secondary)
+                               
+                               // 示例缩略图
+                               HStack(spacing: 8) {
+                                   ForEach(0..<4) { _ in
+                                       RoundedRectangle(cornerRadius: 6)
+                                           .fill(Color.gray.opacity(0.18))
+                                           .frame(width: 48, height: 48)
+                                           .overlay(
+                                               Image(systemName: "music.note.list")
+                                                   .font(.title3)
+                                                   .foregroundColor(.gray.opacity(0.4))
+                                           )
+                                   }
+                                   Spacer()
+                               }
+                           }
+                           .padding()
+                           .frame(maxWidth: .infinity)
+                           .background(
+                               RoundedRectangle(cornerRadius: 12)
+                                   .fill(Color.white.opacity(0.85))
+                                   .shadow(color: .black.opacity(0.08), radius: 5, x: 0, y: 2)
+                           )
+                           .padding(.horizontal)
+
+                           
                        case .SystemSetting:
                            Text("系统设置区域")
                                .frame(maxWidth: .infinity)
