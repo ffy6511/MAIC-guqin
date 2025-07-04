@@ -67,13 +67,43 @@ struct PersonalView: View {
                     Group {
                        switch selectedTab {
                        case .MyDesign:
-                           Text("古琴设计区域")
+                           // 古琴定制区域
+                           NavigationLink(destination: GuqinCustomizationView()) {
+                               VStack(spacing: 8) {
+                                   HStack {
+                                       Image(systemName: "music.note")
+                                           .font(.title2)
+                                           .foregroundColor(.blue)
+
+                                       Text("古琴定制")
+                                           .font(.headline)
+                                           .foregroundColor(.primary)
+
+                                       Spacer()
+
+                                       Image(systemName: "chevron.right")
+                                           .font(.caption)
+                                           .foregroundColor(.secondary)
+                                   }
+
+                                   Text("设计您专属的古琴，选择形制、材质和琴弦")
+                                       .font(.caption)
+                                       .foregroundColor(.secondary)
+                                       .multilineTextAlignment(.leading)
+                                       .frame(maxWidth: .infinity, alignment: .leading)
+                               }
+                               .padding()
                                .frame(maxWidth: .infinity)
-                               .frame(height: 150)
-                               .background(Color.gray.opacity(0.1))
-                               .cornerRadius(8)
+                               .frame(height: 80)
+                               .background(
+                                   RoundedRectangle(cornerRadius: 12)
+                                       .fill(Color(UIColor.systemBackground))
+                                       .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 2)
+                               )
                                .padding(.horizontal)
-                           
+                           }
+                           .buttonStyle(PlainButtonStyle())
+
                            Text("社区画廊")
                                .frame(maxWidth: .infinity)
                                .frame(height: 150)

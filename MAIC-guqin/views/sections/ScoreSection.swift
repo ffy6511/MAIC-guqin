@@ -1,5 +1,5 @@
 //
-// ScoreSection.swift (更新后的代码)
+// ScoreSection.swift 
 // MAIC-guqin
 //
 // Created by Zhuo on 2025/6/26.
