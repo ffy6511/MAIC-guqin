@@ -22,15 +22,14 @@ struct AppreciationView: View {
     
     //    当前功能按钮的items
     let previewItems = [
-        // "实物扫描" 按钮
-        FunctionItem(title: "实物扫描", icon: "camera.viewfinder") {
-            print("预览：实物扫描按钮被点击了")
-        },
-        // "辞典查询" 按钮
-        FunctionItem(title: "辞典查询", icon: "magnifyingglass") {
-            print("预览：辞典查询按钮被点击了")
-        }
-    ]
+       GradientFunctionalButton(title: "实物扫描", icon: "camera.viewfinder") {
+           print("预览：实物扫描按钮被点击了")
+       },
+       GradientFunctionalButton(title: "辞典查询", icon: "magnifyingglass") {
+           print("预览：辞典查询按钮被点击了")
+       }
+   ]
+    
     //    用于控制选中的tab的状态变量
     @State private var selectedTab: MasterPerformanceTab = .classicVideos
     
@@ -41,13 +40,18 @@ struct AppreciationView: View {
     var body: some View {
            NavigationStack {
                ScrollView(.vertical, showsIndicators: false) {
-                   VStack(alignment: .leading) {
+                   VStack(alignment: .center) {
                     
-                       
-                       FunctionalButtonsSection(sectionTitle: nil, functionItems: previewItems)
-                           .frame(maxWidth: .infinity, minHeight: 100) 
-                           .padding(.horizontal, UIScreen.main.bounds.width * 0.02) // 统一水平内边距
-                           .padding(.bottom, 16) // 底部间距
+                    // 功能按钮部分
+                      HStack(spacing: 16) {
+                          ForEach(previewItems.indices, id: \.self) { index in
+                              previewItems[index]
+                                  .frame(width: 160, height: 120)
+                          }
+                      }
+                      .padding(.horizontal, UIScreen.main.bounds.width * 0.01) // 统一水平内边距
+                      .padding(.bottom, 8) // 底部间距
+
                        
                        HStack {
                            Text("大师演奏")
@@ -68,13 +72,15 @@ struct AppreciationView: View {
                            }
                        }
                        .padding(.horizontal)
-                       .padding(.bottom,4)
+                       .padding(.bottom,0)
                        
                       
                        Group {
                            switch selectedTab {
                            case .classicVideos:
                                ClassicVideoSection(sectionTitle: nil, showMoreButton: false, viewModel: classicVideoViewModel)
+                                   .offset(y:-10)
+                               
                            case .animatedShadows:
                                Text("动画剪影内容展示区域")
                                    .frame(maxWidth: .infinity)
@@ -82,6 +88,7 @@ struct AppreciationView: View {
                                    .background(Color.blue.opacity(0.1))
                                    .cornerRadius(8)
                                    .padding(.horizontal)
+                               
                            case .communityShare:
                                Text("社区分享内容展示区域")
                                    .frame(maxWidth: .infinity)
@@ -135,6 +142,7 @@ struct AppreciationView: View {
                // 设置 NavigationStack 的导航栏标题
                .navigationTitle("名琴博物馆") // 主页标题
                .navigationBarTitleDisplayMode(.large)
+               .padding(.horizontal,8)
                .background(
                    LinearGradient(
                        gradient: Gradient(stops: [
@@ -146,8 +154,9 @@ struct AppreciationView: View {
                        startPoint: .top,
                        endPoint: .bottom
                    )
-                   .ignoresSafeArea() // 让渐变色扩展到安全区域之外，包括导航栏背后
+                   .ignoresSafeArea()
                ) // 确保背景色填充整个屏幕
+               
            }
        }
    }

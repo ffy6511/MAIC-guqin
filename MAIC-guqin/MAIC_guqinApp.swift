@@ -47,6 +47,7 @@ struct MAIC_guqinApp: App {
             MainView()
                 .environmentObject(appSettings)
                 .environmentObject(scoreDataManager)
+                .tint(Color("AccentColor")) // 全局设置导航栏颜色
         }
         .modelContainer(sharedModelContainer)
     }

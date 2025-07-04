@@ -20,17 +20,17 @@ struct ClassicVideoCard: View {
                 .clipped() // 裁剪超出部分
                 .cornerRadius(12) // 卡片圆角
                 .overlay(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                Color(hex: "#FFFFFF"),
-                                Color(hex: "#5E5E5E")
-                            ]),
-                            startPoint: .trailing,
-                            endPoint: .leading
-                        )
-                        .cornerRadius(12)
-                        .opacity(0.3) // 渐变蒙版透明度
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(hex: "#FFFFFF"),
+                            Color(hex: "#5E5E5E")
+                        ]),
+                        startPoint: .trailing,
+                        endPoint: .leading
                     )
+                    .cornerRadius(12)
+                    .opacity(0.3) // 渐变蒙版透明度
+                )
                 
             
             // 2. 文字信息 (左上角)
@@ -81,7 +81,7 @@ struct ClassicVideoCard: View {
             
             
             Image(systemName: "play.circle.fill")
-               .font(.system(size: 60)) // 播放图标
+               .font(.system(size: 50)) // 播放图标
                .foregroundColor(.white.opacity(0.6))
                .shadow(color: .black.opacity(0.5), radius: 5)
                .frame(maxWidth: .infinity, maxHeight: .infinity)

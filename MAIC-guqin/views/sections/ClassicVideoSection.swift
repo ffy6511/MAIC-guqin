@@ -14,7 +14,7 @@ struct ClassicVideoSection: View {
     @ObservedObject var viewModel: ClassicVideoViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(alignment: .leading, spacing: 0) {
             // Section 标题和“更多”按钮
             HStack {
                 if let title = sectionTitle {
@@ -46,13 +46,13 @@ struct ClassicVideoSection: View {
                         NavigationLink(destination: PerformanceDetailView(item:item)) {
                             ClassicVideoCard(item: item)
                         }
-                        .buttonStyle(CardPressEffectStyle()) // 使用自定义的style
+                        .buttonStyle(CardPressEffectStyle())
                     }
                 }
                 .padding(.horizontal) // 为所有卡片及其容器添加水平内边距
             }
-            // ClassicVideoCard 高度是 300，加上间距，这里设置 310
-            .frame(height: 310)
+            // ClassicVideoCard 高度是 300
+            .frame(height: 320)
         }
         .padding(.vertical, 5)
     }
@@ -79,9 +79,9 @@ struct ClassicVideoSection_Previews: PreviewProvider {
                     eventName: "李祥霆古琴音乐会",
                     location: "北京",
                     date: PerformanceItem.dateFormatter.date(from: "2023.09.10"),
-                    coverImage: "经典影像", 
-                    videoURL: nil,
-                    description: "李祥霆教授的古琴名曲《阳关三叠》。"
+                    coverImage: "经典影像", // 使用你统一的图片资源
+                    videoURL: PerformanceItem.localURL(for: "广陵散", fileExtension: "mov"),
+                    description: "《阳关三叠》是根据唐代诗人王维的七绝《送元二使安西》谱写的一首琴歌，表达了深厚的离别之情和对友人的美好祝愿。这首曲子旋律优美，意境深远，是古琴曲中的经典代表作。"
                 ),
                 PerformanceItem(
                     title: "平沙落雁",

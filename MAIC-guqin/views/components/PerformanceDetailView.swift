@@ -12,7 +12,7 @@ struct PerformanceDetailView: View {
     let item: PerformanceItem // 接收一个 PerformanceItem 数据
 
     var body: some View {
-        ScrollView { // 使用 ScrollView 确保内容可滚动
+        ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // 1. 视频播放器或占位符
                 if let videoURL = item.videoURL {
@@ -29,33 +29,32 @@ struct PerformanceDetailView: View {
                         .frame(height: 250)
                         .clipped()
                         .cornerRadius(10)
+                        .blur(radius: 2)
                         .overlay(
                             Text("视频资源暂不可用")
                                 .font(.title3)
-                                .foregroundColor(.white)
+                                .foregroundColor(.white.opacity(0.6))
                                 .shadow(radius: 3)
                         )
                         .padding(.horizontal)
                 }
 
-                // 2. 标题和作者
-                HStack(spacing: 5) {
-                    Text(item.title)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("TextPrimary"))
-
-                    Spacer()
-                    
-                    Text("演奏者: \(item.performer)")
-                        .font(.title2)
-                        .foregroundColor(Color("TextSecondary"))
-                        .padding()
-                }
-                .padding(.horizontal)
+                // 2. 标题和作者 （下移）
 
                 // 3. 其他详细信息
                 VStack(alignment: .leading, spacing: 8) {
+                    
+                    
+                    HStack {
+                        Image(systemName: "person.circle")
+                            .foregroundColor(Color("AccentColor"))
+                        Text("演奏者: ")
+                        + Text(item.performer)
+                           .font(.headline)
+                           .fontWeight(.medium)
+                           .foregroundColor(Color("TextPrimary"))
+                    }
+                    
                     if let eventName = item.eventName {
                         HStack {
                             Image(systemName: "music.mic")
@@ -92,19 +91,27 @@ struct PerformanceDetailView: View {
                 }
                 .font(.body)
                 .foregroundColor(Color("TextSecondary"))
-                .padding(.horizontal, 16)
+                .padding(.horizontal, 8)
+                .padding()
 
                 // 4. 描述
                 if let description = item.description, !description.isEmpty {
-                    VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 10) {
                         Text("简介")
                             .font(.headline)
                             .foregroundColor(Color("TextPrimary"))
+                            
                         Text(description)
                             .font(.body)
                             .foregroundColor(Color("TextPrimary"))
                             .lineSpacing(5) // 行间距
-                            .padding(.horizontal, 8)
+                            .padding(12)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(Color(.brandSecondary.opacity(0.2)))
+                                    .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 2)
+                                    .frame(maxWidth: .infinity)
+                            )
                     }
                     .padding(.horizontal)
                     .padding(.top, 4)
@@ -116,6 +123,7 @@ struct PerformanceDetailView: View {
         }
         .navigationTitle(item.title) // 设置导航栏标题为曲名
         .navigationBarTitleDisplayMode(.inline) // 标题显示模式为小标题
+        .padding(.horizontal,8)
         .background(
             LinearGradient(
                 gradient: Gradient(stops: [
@@ -153,7 +161,7 @@ struct PerformanceDetailView_Previews: PreviewProvider {
             location: "北京",
             date: PerformanceItem.dateFormatter.date(from: "2023.09.10"),
             coverImage: "经典影像", // 使用你统一的图片资源
-            videoURL: PerformanceItem.localURL(for: "sample_video", fileExtension: "mp4"), // 假设有一个名为 "sample_video.mp4" 的本地视频文件
+            videoURL: PerformanceItem.localURL(for: "广陵散", fileExtension: "mov"),
             description: "《阳关三叠》是根据唐代诗人王维的七绝《送元二使安西》谱写的一首琴歌，表达了深厚的离别之情和对友人的美好祝愿。这首曲子旋律优美，意境深远，是古琴曲中的经典代表作。"
         )
 

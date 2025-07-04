@@ -11,22 +11,24 @@ struct CalligraphyTextStyle: ViewModifier {
     let fontSize: CGFloat
     let shadowOffset: CGSize
     let blurRadius: CGFloat
+    let fontWeight: Font.Weight // 新增参数
     
-    init(fontSize: CGFloat = 15, shadowOffset: CGSize = CGSize(width: 1, height: 1), blurRadius: CGFloat = 1) {
+    init(fontSize: CGFloat = 15, shadowOffset: CGSize = CGSize(width: 1, height: 1), blurRadius: CGFloat = 1, fontWeight: Font.Weight = .regular) {
         self.fontSize = fontSize
         self.shadowOffset = shadowOffset
         self.blurRadius = blurRadius
+        self.fontWeight = fontWeight
     }
     
     func body(content: Content) -> some View {
         content
-            .font(.custom("STKaiti", size: fontSize))
-            .fontWeight(.medium)
+            .font(.custom("HanziPen SC", size: fontSize))
+            .fontWeight(fontWeight) // 使用动态字体权重
             .foregroundColor(.black)
             .background(
                 content
                     .font(.custom("STKaiti", size: fontSize))
-                    .fontWeight(.medium)
+                    .fontWeight(fontWeight) // 使用动态字体权重
                     .foregroundColor(.gray.opacity(0.3))
                     .blur(radius: blurRadius)
                     .offset(shadowOffset)
@@ -35,7 +37,7 @@ struct CalligraphyTextStyle: ViewModifier {
 }
 
 extension View {
-    func calligraphyStyle(fontSize: CGFloat = 15, shadowOffset: CGSize = CGSize(width: 1, height: 1), blurRadius: CGFloat = 1) -> some View {
-        modifier(CalligraphyTextStyle(fontSize: fontSize, shadowOffset: shadowOffset, blurRadius: blurRadius))
+    func calligraphyStyle(fontSize: CGFloat = 15, shadowOffset: CGSize = CGSize(width: 1, height: 1), blurRadius: CGFloat = 1, fontWeight: Font.Weight = .regular) -> some View {
+        modifier(CalligraphyTextStyle(fontSize: fontSize, shadowOffset: shadowOffset, blurRadius: blurRadius, fontWeight: fontWeight))
     }
 }

@@ -25,41 +25,40 @@ struct ScoreDetailView: View {
                     .padding(.bottom, 10)
 
                 // 标题
-                Text(scoreItem.title)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("TextPrimary"))
+//                Text(scoreItem.title)
+//                    .font(.largeTitle)
+//                    .fontWeight(.bold)
+//                    .foregroundColor(Color("TextPrimary"))
 
-                // 作曲家
-                if let composer = scoreItem.composer {
-                    Text("作曲家: \(composer)")
-                        .font(.title3)
-                        .foregroundColor(Color("TextSecondary"))
-                }
 
-                // 标签，添加点击功能
+
+                // 标签
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
+                    HStack(alignment: .center, spacing: 8) {
                         ForEach(scoreItem.tags, id: \.self) { tag in
                             NavigationLink(destination: TaggedScoresView(tag: tag)) {
                                 Text(tag)
                                     .font(.subheadline)
-                                    .foregroundColor(Color("TextSecondary"))
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 6)
+                                    .foregroundColor(Color("BrandPrimary"))
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
                                     .background(Color("BackgroundTertiary"))
-                                    .cornerRadius(8)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color("BrandPrimary").opacity(0.3), lineWidth: 1)
-                                    )
+                                    .cornerRadius(.infinity)
+                                    .shadow(color: Color.black.opacity(0.08), radius: 3, x: 0, y: 2)
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal) // 保持ScrollView的内边距
                 }
 
+                // 作曲家
+                if let composer = scoreItem.composer {
+                    Text("作曲家: \(composer)")
+                        .font(.headline)
+                        .foregroundColor(Color("TextSecondary"))
+                }
+                
                 // 跟练人数
                 Text("跟练人数: \(scoreItem.practiceCount)")
                     .font(.subheadline)
