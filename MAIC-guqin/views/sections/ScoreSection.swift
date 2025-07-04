@@ -47,11 +47,12 @@ struct ScoreSection: View {
                             ScoreItemCard(item: item)
                         }
                         .buttonStyle(PlainButtonStyle()) // 移除 NavigationLink 默认的蓝色文本样式
+                        .buttonStyle(CardPressEffectStyle()) // 使用自定义样式
                     }
                 }
                 .padding(.horizontal) // 为所有卡片及其容器添加水平内边距
             }
-            .frame(height: 120) // 确保 ScrollView 有一个明确的高度
+//            .frame(height: 120)
         }
         .padding(.vertical, 5) // 整个 Section 的垂直内边距
     }

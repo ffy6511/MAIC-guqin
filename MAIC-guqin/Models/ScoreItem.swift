@@ -24,7 +24,17 @@ struct ScoreItem: Identifiable, Codable {
 
     // 示例：创建本地文件 URL
     static func localURL(for fileName: String, fileExtension: String) -> URL? {
-        // 假设本地曲谱文件放在应用的 Bundle 中
-        return Bundle.main.url(forResource: fileName, withExtension: fileExtension)
+        // 首先尝试从应用的主Bundle中查找
+        if let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) {
+            return url
+        }
+        
+        // 如果主Bundle中没有，尝试从ScoreItem.bundle中查找
+        if let bundlePath = Bundle.main.path(forResource: "ScoreItem", ofType: "bundle"),
+           let scoreBundle = Bundle(path: bundlePath) {
+            return scoreBundle.url(forResource: fileName, withExtension: fileExtension)
+        }
+        
+        return nil
     }
 }

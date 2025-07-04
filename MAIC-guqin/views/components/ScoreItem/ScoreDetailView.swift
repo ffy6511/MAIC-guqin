@@ -15,14 +15,18 @@ struct ScoreDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // 曲谱封面大图
-                Image(scoreItem.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit) // 适应宽度，保持比例
-                    .frame(maxWidth: .infinity)
-                    .clipped()
-                    .cornerRadius(12)
-                    .shadow(radius: 5)
-                    .padding(.bottom, 10)
+                HStack {
+                    Spacer() 
+                    Image(scoreItem.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 300)
+                        .clipped()
+                        .cornerRadius(12)
+                        .shadow(radius: 5)
+                    Spacer()
+                }
+                .padding(.bottom, 10)
 
                 // 标题
 //                Text(scoreItem.title)
@@ -92,17 +96,14 @@ struct ScoreDetailView: View {
                 // PDF 和 MusicXML 文件链接 (作为按钮或简单的Text)
                 VStack(alignment: .leading, spacing: 10) {
                     if let pdfURL = scoreItem.pdfURL {
-                        Button(action: {
-                            // 在这里处理 PDF 打开逻辑，例如使用 Safari 或内置 PDF 查看器
-                            print("打开 PDF: \(pdfURL.absoluteString)")
-                            // 实际应用中可以：
-                            // UIApplication.shared.open(pdfURL) // 打开外部应用
-                            // 或者通过 Sheet 模态展示 PDF 阅读器
-                        }) {
-                            Label("查看曲谱 (PDF)", systemImage: "doc.text.fill")
-                                .font(.body)
-                                .foregroundColor(Color("BrandPrimary"))
-                        }
+                        Text("曲谱预览")
+                            .font(.headline)
+                            .padding(.top, 20)
+                        PDFKitView(url: pdfURL)
+                            .frame(height: 400)
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                            .padding(.bottom, 20)
                     }
 
                     if let musicXMLURL = scoreItem.musicXMLURL {
