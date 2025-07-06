@@ -270,7 +270,7 @@ enum CustomizationCategory: String, CaseIterable, Identifiable {
         }
     }
 
-    /// 是否属于琴身类别（左侧边栏）
+    /// 是否属于琴身类别
     var isBodyCategory: Bool {
         switch self {
         case .shape, .material, .inscription:
@@ -292,6 +292,7 @@ struct GuqinConfiguration: Codable, Equatable {
     var isShowingBack: Bool // 是否显示背面（用于铭文编辑）
 
     /// 默认配置
+    // 使用 ' 避免成为关键字处理
     static let `default` = GuqinConfiguration(
         shape: .fuxi,
         material: .blackLacquer,

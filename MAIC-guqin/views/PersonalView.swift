@@ -69,11 +69,11 @@ struct PersonalView: View {
                        case .MyDesign:
                            // 古琴定制区域
                            NavigationLink(destination: GuqinCustomizationView()) {
-                               VStack(spacing: 8) {
+                               VStack(alignment: .leading, spacing: 12) {
                                    HStack {
                                        Image(systemName: "music.note")
                                            .font(.title2)
-                                           .foregroundColor(.blue)
+                                           .foregroundColor(.blue.opacity(0.5))
 
                                        Text("古琴定制")
                                            .font(.headline)

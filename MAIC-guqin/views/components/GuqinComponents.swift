@@ -269,7 +269,7 @@ struct CustomizationOptionSelector: View {
                                 thumbnailImage: Image(shape.iconName),
                                 thumbnailColor: nil,
                                 title: shape.rawValue,
-                                isSelected: viewModel.currentConfiguration.shape == shape
+                                isSelected: viewModel.isSelected(shape, in: .shape)
                             ) {
                                 viewModel.selectShape(shape)
                             }
@@ -279,9 +279,9 @@ struct CustomizationOptionSelector: View {
                         ForEach(GuqinMaterialType.allCases) { material in
                             OptionThumbnailButton(
                                 thumbnailImage: Image(material.thumbnailImageName),
-                                thumbnailColor: material.baseColor,
+                                thumbnailColor: material.baseColor, // 仅用于预览
                                 title: material.rawValue,
-                                isSelected: viewModel.currentConfiguration.material == material
+                                isSelected: viewModel.isSelected(material, in: .material)
                             ) {
                                 viewModel.selectMaterial(material)
                             }
@@ -293,7 +293,7 @@ struct CustomizationOptionSelector: View {
                                 thumbnailImage: Image(stringsCount.iconName),
                                 thumbnailColor: nil,
                                 title: stringsCount.rawValue,
-                                isSelected: viewModel.currentConfiguration.stringsCount == stringsCount
+                                isSelected: viewModel.isSelected(stringsCount, in: .stringsCount)
                             ) {
                                 viewModel.selectStringsCount(stringsCount)
                             }
@@ -305,7 +305,7 @@ struct CustomizationOptionSelector: View {
                                 thumbnailImage: Image(stringsMaterial.materialImageName),
                                 thumbnailColor: stringsMaterial.materialColor,
                                 title: stringsMaterial.rawValue,
-                                isSelected: viewModel.currentConfiguration.stringsMaterial == stringsMaterial
+                                isSelected: viewModel.isSelected(stringsMaterial, in: .stringsMaterial)
                             ) {
                                 viewModel.selectStringsMaterial(stringsMaterial)
                             }
@@ -324,7 +324,7 @@ struct CustomizationOptionSelector: View {
         .padding(.vertical, 12)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(UIColor.systemBackground))
+                .fill(.ultraThinMaterial)
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: -2)
         )
     }
@@ -359,7 +359,7 @@ struct InscriptionEditor: View {
                     // 铭文输入
                     TextField("输入铭文", text: $inscriptionText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .onChange(of: inscriptionText) { newValue in
+                        .onChange(of: inscriptionText) {
                             updateInscription()
                         }
 

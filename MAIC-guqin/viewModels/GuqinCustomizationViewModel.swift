@@ -31,7 +31,7 @@ class GuqinCustomizationViewModel: ObservableObject {
             .sink { [weak self] configuration in
                 self?.saveConfiguration(configuration)
             }
-            .store(in: &cancellables)
+            .store(in: &cancellables) // 保持订阅有效
     }
     
     private func saveConfiguration(_ configuration: GuqinConfiguration) {
@@ -47,7 +47,7 @@ class GuqinCustomizationViewModel: ObservableObject {
             currentConfiguration.shape = shape
         }
         
-        // 触觉反馈
+        // TODO: 检查触觉反馈的开关
         let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
         impactFeedback.impactOccurred()
     }
@@ -100,9 +100,7 @@ class GuqinCustomizationViewModel: ObservableObject {
 
     /// 切换显示背面（用于铭文编辑）
     func toggleShowingBack() {
-        withAnimation(.easeInOut(duration: 0.5)) {
-            currentConfiguration.isShowingBack.toggle()
-        }
+        currentConfiguration.isShowingBack.toggle()
 
         // 触觉反馈
         let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
@@ -187,12 +185,12 @@ class GuqinCustomizationViewModel: ObservableObject {
         }
     }
     
-    /// 琴身类别列表（左侧边栏）
+    /// 琴身类别列表
     var bodyCategories: [CustomizationCategory] {
         return CustomizationCategory.allCases.filter { $0.isBodyCategory }
     }
     
-    /// 琴弦类别列表（右侧边栏）
+    /// 琴弦类别列表
     var stringsCategories: [CustomizationCategory] {
         return CustomizationCategory.allCases.filter { !$0.isBodyCategory }
     }
