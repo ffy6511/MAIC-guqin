@@ -70,49 +70,62 @@ struct GuqinPreviewView: View {
 
     // MARK: - 背面视图
     private var backView: some View {
-        ZStack {
-            // 背面形制轮廓
-            Image(shapeImageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 280, maxHeight: 400)
-                .scaleEffect(x: -1, y: 1) // 水平翻转
-
-            // 背面材质
-            Image(materialTextureImageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .mask(
-                    Image(shapeImageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .scaleEffect(x: -1, y: 1) // 水平翻转
-                )
-                .blendMode(materialBlendMode)
-                .frame(maxWidth: 280, maxHeight: 400)
-
-            // 铭文显示
-            if !inscription.text.isEmpty {
-                inscriptionView
+        GeometryReader{ proxy in
+            ZStack {
+                // 背面形制轮廓
+                Image(shapeImageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 280, maxHeight: 400)
+                    .scaleEffect(x: -1, y: 1) // 水平翻转
+                
+                // 背面材质
+                Image(materialTextureImageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .mask(
+                        Image(shapeImageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaleEffect(x: -1, y: 1) // 水平翻转
+                    )
+                    .blendMode(materialBlendMode)
+                    .frame(maxWidth: 280, maxHeight: 400)
+                
+                // 铭文显示
+               
+            }
+            .frame(width: proxy.size.width, height: proxy.size.height)
+//            .rotation3DEffect(.degrees(180), axis: (x:0, y:1, z:0))
+            .overlay(alignment: .center){
+                if !inscription.text.isEmpty {
+                    inscriptionView(proxy: proxy)
+                }
+            }
             }
         }
-    }
 
     // MARK: - 铭文视图
-    private var inscriptionView: some View {
+    private func inscriptionView(proxy: GeometryProxy)-> some View {
         Text(inscription.text)
-            .font(.system(size: inscription.fontSize, weight: inscription.fontWeight))
+            .applyFontStyle(
+                style: inscription.fontStyle,
+                size: inscription.fontSize,
+                weight: inscription.fontWeight
+            )
             .foregroundColor(.primary)
             .multilineTextAlignment(.center)
             .padding()
             .frame(maxWidth: 200, maxHeight: 300)
-            .position(inscriptionPosition)
+            .position(inscriptionPosition(proxy:proxy))
+            .scaleEffect(x: -1, y: 1)
     }
+    
 
     // MARK: - 铭文位置计算
-    private var inscriptionPosition: CGPoint {
-        let centerX: CGFloat = 140
-        let centerY: CGFloat = 200
+    private func inscriptionPosition(proxy: GeometryProxy)-> CGPoint {
+        let centerX: CGFloat = proxy.size.width / 2
+        let centerY: CGFloat = proxy.size.height / 2
 
         switch inscription.position {
         case .topLeft:
@@ -336,6 +349,7 @@ struct InscriptionEditor: View {
     @State private var inscriptionText: String = ""
     @State private var selectedPosition: GuqinInscription.InscriptionPosition = .center
     @State private var fontSize: CGFloat = 16
+    @State private var selectedFontStyle: InscriptionFontStyle = .system
 
     var body: some View {
         VStack(spacing: 16) {
@@ -397,9 +411,25 @@ struct InscriptionEditor: View {
                             .foregroundColor(.secondary)
 
                         Slider(value: $fontSize, in: 12...24, step: 1)
-                            .onChange(of: fontSize) { _ in
+                            .onChange(of: fontSize) {
                                 updateInscription()
                             }
+                    }
+                    
+                    // 字体样式
+                    VStack(alignment: .leading, spacing: 8){
+                        Text("字体样式")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        Picker("字体样式",selection: $selectedFontStyle){
+                            ForEach(InscriptionFontStyle.allCases){style in
+                                Text(style.rawValue).tag(style)}
+                        }
+                        .pickerStyle(.segmented)
+                        .onChange(of: selectedFontStyle){
+                            updateInscription()
+                        }
                     }
                 }
                 .padding()
@@ -411,6 +441,7 @@ struct InscriptionEditor: View {
             inscriptionText = viewModel.currentConfiguration.inscription.text
             selectedPosition = viewModel.currentConfiguration.inscription.position
             fontSize = viewModel.currentConfiguration.inscription.fontSize
+            selectedFontStyle = viewModel.currentConfiguration.inscription.fontStyle
         }
     }
 
@@ -419,7 +450,8 @@ struct InscriptionEditor: View {
             text: inscriptionText,
             fontSize: fontSize,
             fontWeight: .regular,
-            position: selectedPosition
+            position: selectedPosition,
+            fontStyle: selectedFontStyle
         )
         viewModel.updateInscription(inscription)
     }

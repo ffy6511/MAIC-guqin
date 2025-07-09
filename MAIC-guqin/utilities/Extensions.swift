@@ -73,3 +73,16 @@ extension Font.Weight: Codable {
         try container.encode(stringValue)
     }
 }
+
+// 铭文字体样式的选择
+extension View {
+    @ViewBuilder
+    func applyFontStyle(style: InscriptionFontStyle, size: CGFloat, weight: Font.Weight) -> some View {
+        switch style {
+        case .system:
+            self.font(.system(size: size, weight: weight))
+        case .sealScript:
+            self.SealScriptStyle(fontSize: size, color: .primary)
+        }
+    }
+}

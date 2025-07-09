@@ -192,19 +192,31 @@ enum GuqinStringsMaterial: String, CaseIterable, Identifiable, Codable {
     }
 }
 
+enum InscriptionFontStyle: String, CaseIterable, Identifiable, Codable{
+    case system = "系统默认"
+    case sealScript = "小篆"
+    
+    var id: String {self.rawValue}
+}
+
+
 // MARK: - 铭文结构
 struct GuqinInscription: Codable, Equatable {
     var text: String
     var fontSize: CGFloat
     var fontWeight: Font.Weight
     var position: InscriptionPosition
+    var fontStyle: InscriptionFontStyle
 
     static let `default` = GuqinInscription(
         text: "",
         fontSize: 16,
         fontWeight: .regular,
-        position: .center
+        position: .center,
+        fontStyle: .sealScript
     )
+    
+
 
     enum InscriptionPosition: String, CaseIterable, Codable, Identifiable {
         var id: String { self.rawValue }
